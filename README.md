@@ -113,6 +113,11 @@ A: Yes, although linked support has not been extensively tested, and linked
 elements of the games are not randomized. Animal companion is still determined
 by the seed, not by the linked file. Multiworld linked games are not supported.
 
+**Q: What emulator would you recommend for playing the randomizer?**
+
+A: If you want to play multiworld, you must use Bizhawk. BGB and mGBA are good
+choices otherwise. Avoid VisualBoyAdvance and its variants; they have serious
+emulation bugs that can cause crashes and other problems.
 
 ## Thanks to:
 
