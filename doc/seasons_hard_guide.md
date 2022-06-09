@@ -84,6 +84,8 @@ for a list of things that are out of logic even in hard.
 - Hit minecart levers in D4 by dropping pots while passing by. This works for
   both 1F minecarts.
   [[Video]](https://clips.twitch.tv/LaconicYawningPresidentFUNgineer)
+- Fight the D4 boss (Gohma) using ember seeds or scent seeds from the seed
+  satchel. [[Video]](https://www.youtube.com/watch?v=hXcSwAE86mE)
 - Pegasus + feather jump to reach the left chest in D5 (no bomb boost
   required). [[Video]](https://clips.twitch.tv/CredulousTemperedMulePicoMause)
 - Bomb + feather jump across the water to get to the minecarts in D5.
