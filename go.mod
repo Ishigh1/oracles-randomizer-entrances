@@ -1,4 +1,4 @@
-module github.com/jangler/oracles-randomizer
+module github.com/Ishigh1/oracles-randomizer-entrances
 
 go 1.16
 
