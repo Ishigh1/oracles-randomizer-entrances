@@ -16,3 +16,5 @@ untracked/
 .vscode/
 .DS_Store/
 .idea/
+.gitignore
+gopath

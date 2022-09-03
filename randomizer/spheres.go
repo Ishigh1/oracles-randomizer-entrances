@@ -228,7 +228,7 @@ func getAllSpheres(routes []*routeInfo) (graph, map[*node]*node, [][]*node, []*n
 		ri.graph["start"].addParent(g["start"])
 		g["done"].addParent(ri.graph["done"])
 	}
-	spheres, extra := getSpheres(g, checks, func() {
+	spheres, extra, _, _ := getSpheres(g, checks, false, func() {
 		for _, ri := range routes {
 			ri.graph.reset()
 		}

@@ -432,7 +432,7 @@ func runRandomizer(ui *uiInstance, optsList []*randomizerOptions, logf logFunc) 
 			}
 			logFilename := strings.Replace(outfile, ".gbc", "", 1) + "_log.txt"
 
-			sum, err := applyRoute(rom, routes[i], dirName, logFilename, ropts,
+			seed, sum, logFilename, err := applyRoute(rom, routes[i], dirName, logFilename, ropts,
 				checks, spheres, extra, g, resetFunc, treasures, flagVerbose, logf)
 			if err != nil {
 				fatal(err, logf)
@@ -701,7 +701,7 @@ func applyRoute(rom *romState, ri *routeInfo, dirName, logFilename string,
 	ropts *randomizerOptions, checks map[*node]*node, spheres [][]*node,
 	extra []*node, g graph, resetFunc func(), treasures map[string]*treasure,
 	verbose bool, logf logFunc) (uint32, []byte, string, error) {
-		// sanity check beforehand
+	// sanity check beforehand
 	if errs := rom.verify(); errs != nil {
 		if verbose {
 			for _, err := range errs {
@@ -712,14 +712,13 @@ func applyRoute(rom *romState, ri *routeInfo, dirName, logFilename string,
 	}
 
 	// search for valid configuration
-	var ri *routeInfo
 	if ropts.plan == nil {
 		logf("searching...")
 		seed, err := setRandomSeed(ropts.seed)
 		if err != nil {
 			return 0, nil, "", err
 		}
-		ri, err = findRoute(rom, seed, ropts, verbose, logf)
+		ri, err = findRoute(rom, seed, rand.New(rand.NewSource(int64(seed))), *ropts, verbose, logf)
 		if err != nil {
 			return 0, nil, "", err
 		}
@@ -739,8 +738,8 @@ func applyRoute(rom *romState, ri *routeInfo, dirName, logFilename string,
 	}
 
 	// configuration found; come up with auxiliary data
-	checks := getChecks(ri.usedItems, ri.usedSlots)
-	spheres, extra, entrances, extraEntrances := getSpheres(ri.graph, checks, true)
+	checks = getChecks(ri.usedItems, ri.usedSlots)
+	spheres, extra, entrances, extraEntrances := getSpheres(ri.graph, checks, true, resetFunc)
 	/*
 		owlNames := orderedKeys(getOwlIds(rom.game))
 		owlHinter := newHinter(rom.game)
@@ -753,7 +752,7 @@ func applyRoute(rom *romState, ri *routeInfo, dirName, logFilename string,
 	*/
 	checksum, err := setRomData(rom, ri, ropts, logf, verbose)
 	if err != nil {
-		return nil, err
+		return 0, nil, "", err
 	}
 
 	// write spoiler log
@@ -767,7 +766,7 @@ func applyRoute(rom *romState, ri *routeInfo, dirName, logFilename string,
 			rom, ri, checks, spheres, extra, g, resetFunc, treasures, nil, entrances, extraEntrances)
 	}
 
-	return checksum, nil
+	return ri.seed, checksum, logFilename, nil
 }
 
 // mutates the rom data in-place based on the given route. this doesn't write
