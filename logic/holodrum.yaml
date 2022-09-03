@@ -127,7 +127,7 @@ north swamp: {or: [
         summer, cape, ricky, moosh's flute]]]}
 spool swamp tree: [north swamp, seed item,
     or: [harvest tree, dimitri's flute]]
-floodgate keeper's house: [inner floodgate house, hit lever]
+floodgate keeper's house: [inner floodgate house, or: [hit lever, [hard, bracelet]]]
 floodgate keeper owl: [mystery seeds, floodgate keeper's house]
 spool stump: [north swamp, unflooded]
 dry swamp: {or: [
@@ -273,13 +273,13 @@ temple remains lower stump: {or: [
                 or: [spring, temple remains default spring]]]]]],
     [non-entrance, exit temple remains upper portal, feather,
         # make sure you can get down
-        or: [bomb temple remains, winter, temple remains default winter,
-            [break bush, or: [autumn, [hard, jump 6,
-                or: [temple remains not spring, break flower]]]]],
+        # important: default season is not loaded coming from the upper portal
+        or: [bomb temple remains, winter,
+            [break bush, or: [autumn, [hard, jump 6, break flower]]]],
         # then make sure you can get back up
         or: [gale satchel,
             [bomb temple remains,
-                or: [summer, temple remains default summer],
+                or: [summer, [jump 3, temple remains default summer]],
                 or: [jump 6, [bomb jump 2, magnet gloves]]]]],
     [outer cave below goron mountain area, jump 3],
     [blaino's gym, jump 3]]}

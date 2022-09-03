@@ -14,7 +14,8 @@ enter spool swamp portal: [south swamp, bracelet, or: [
     flute, spool swamp default summer, spool swamp default autumn,
     [spool stump, or: [summer, autumn]],
     [or: [spool swamp default winter, [spool stump, winter]], shovel],
-    [or: [spool swamp default spring, [spool stump, spring]], break flower]]]
+    [or: [spool swamp default spring, [spool stump, spring]],
+        break flower, flippers]]]
 exit spool swamp portal: {or: []}
 
 enter subrosia market portal: [beach]
@@ -54,8 +55,7 @@ exit house of pirates portal: {or: []}
 enter temple remains lower portal: [temple remains lower stump, or: [
     [bomb temple remains, feather],
     [or: [temple remains default winter, winter], or: [
-        [outer NW temple ruins building,
-            or: [temple remains default winter, feather]],
+        [outer NW temple ruins building, feather, winter],
         [hard, shovel, break bush, jump 6],
         [hard, or: [temple remains default spring, spring],
             break flower, break bush, jump 6, winter],
