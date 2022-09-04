@@ -3,10 +3,10 @@ maku path key chest: [
     or: [kill normal, shovel], # kill gel
     or: [inner past - maku tree cave, # south entrance
         [inner past - maku tree stairs, d0 small key]]] # north entrance
-maku path basement: {or: [
+maku path basement: [or: [
     inner past - maku tree stairs, # north entrance
     [inner past - maku tree cave, d0 small key] #south entrance
-]}
+]]
 maku path hp: [inner past - maku tree stairs]
 
 # d1
@@ -31,7 +31,7 @@ d1 U-room: {or: [
     d1 west terrace,
     [d1 wide room, break bush safe, kill giant ghini,
         count: [3, d1 small key]]]}
-d1 basement: [d1 U-room, ember seeds]
+d1 basement: [d1 U-room, or: [ember seeds, [hard, mystery seeds]]]
 
 # d2
 enter d2: {or: []}
@@ -72,8 +72,10 @@ d2 boss: [d2 color room, d2 boss key, or: [bombs, hard]]
 enter d3: {or: []}
 
 # 0 keys
-d3 pols voice chest: [or: [inner d3, bombs],
-    [d3 six-block drop, kill pols voice]]
+d3 pols voice chest: {or: [
+    [inner d3, bombs],
+    [d3 six-block drop, kill pols voice]
+]}
 d3 1F spinner: [inner d3, or: [kill moldorm, bracelet]]
 d3 S crystal: [d3 1F spinner]
 four crystals owl: [mystery seeds, d3 1F spinner]
@@ -212,8 +214,8 @@ enter d6 present: {or: []}
 enter d6 past: {or: []}
 
 # past, 0 keys
-d6 past color room: [inner d6 past, feather, kill switch hook]
-d6 past wizzrobe chest: [inner d6 past, bombs, kill normal]
+d6 past color room: [inner d6 past, or: [feather, [hard, mystery seeds]], kill switch hook]
+d6 past wizzrobe chest: [inner d6 past, bombs, kill wizzrobe]
 d6 past pool chest: [inner d6 past, bombs, ember seeds, flippers]
 d6 open wall: [inner d6 past, bombs, ember shooter]
 deep waters owl: [mystery seeds, d6 open wall]
@@ -236,12 +238,12 @@ d6 boss: [d6 past spinner, d6 boss key, mermaid suit, any seed shooter,
 d6 present diamond chest: [inner d6 present, switch hook]
 d6 present rope room: [inner d6 present,
     or: [flippers, feather, switch hook],
-    or: [any seed shooter, boomerang, jump 3]]
+    or: [any seed shooter, boomerang, jump 3, [hard, feather, sword]]]
 scent seduction owl: [mystery seeds, d6 present rope room]
 d6 present rope chest: [d6 present rope room, scent satchel]
 d6 present hand room: [inner d6 present,
     or: [flippers, feather, switch hook],
-    or: [any seed shooter, boomerang,
+    or: [any seed shooter, boomerang, [hard, feather, sword],
         [jump 3, or: [sword, switch hook, ember seeds,
             scent seeds, mystery seeds, [hard, bombs]]]]]
 d6 present cube chest: [d6 present hand room, bombs, switch hook,
@@ -297,7 +299,7 @@ d7 cane/diamond puzzle: [drain d7, long hook, cane]
 flood d7: [inner d7, long hook, count: [4, d7 small key]]
 d7 3F terrace: [flood d7]
 d7 left wing: [flood d7]
-plasmarine owl: [mystery shooter, flood d7]
+plasmarine owl: [mermaid suit, mystery shooter, flood d7]
 d7 boss: [mermaid suit, d7 boss key, flood d7]
 
 # 5 keys
@@ -314,7 +316,7 @@ enter d8: {or: []}
 
 # 0 keys
 open ears owl: [mystery seeds, inner d8]
-d8 1F chest: [inner d8, bombs]
+d8 1F chest: [inner d8, bombs, kill normal]
 
 # 1 key - access B1F
 d8 ghini chest: [d8 1F chest, d8 small key, switch hook, cane, seed shooter,

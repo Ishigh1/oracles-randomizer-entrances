@@ -31,8 +31,11 @@ ages: {count: [3, harp]}
 power glove: {count: [2, bracelet]}
 mermaid suit: {count: [2, flippers]}
 
+#jump items
+jump 1 : [feather]
+jump 2 : [feather, or: [pegasus satchel, hard]]
 bomb jump 2: [feather, or: [pegasus satchel, [hard, bombs]]]
-jump 3: [feather, pegasus satchel]
+jump 3: [hard, feather, pegasus satchel]
 bomb jump 3: [hard, feather, pegasus satchel, bombs]
 
 seed item: {or: [satchel, seed shooter]}
@@ -56,5 +59,4 @@ scent shooter: [scent seeds, seed shooter]
 pegasus shooter: [pegasus seeds, seed shooter]
 gale shooter: [gale seeds, seed shooter]
 mystery shooter: [mystery seeds, seed shooter]
-any seed shooter: [seed shooter,
-    or: [ember seeds, scent seeds, pegasus seeds, gale seeds, mystery seeds]]
+any seed shooter: [seed shooter] #or: [ember seeds, scent seeds, pegasus seeds, gale seeds, mystery seeds]]

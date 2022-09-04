@@ -23,12 +23,12 @@ outer stairs SE of palace: {or: [[lynna village, break bush safe]]}
 outer past - SW goron - old zora: {or: [
     ages, 
     goron lower past water, 
-    [lynna village, feather, switch hook],
+    [lynna village, jump 1, switch hook],
     [outer past - SW cave to upper goron, switch hook]
 ]}
 outer cheval: {or: [
     [lynna village, or: [
-        feather, 
+        jump 1,
         flippers]],
     open sea past,
     [ages, or: [
@@ -39,7 +39,7 @@ outer cheval: {or: [
 ]}
 outer raft guy L: {or: [lynna village]}
 outer raft guy R: {or: [open sea past]}
-# black tower
+
 
 inner palace: {or: [
     inner palace L, 
@@ -68,19 +68,21 @@ inner past - SW goron - old zora: {or: []}
 inner cheval: {or: []}
 inner raft guy L: {or: [inner raft guy R]}
 inner raft guy R: {or: [inner raft guy L]}
-# black tower
+
 
 # western woods
 outer past - NE of mystery tree: {or: [
+    [fairies' woods, ages],
     [deku forest, or: [
-        feather, 
+        jump 1,
         switch hook, 
         [ember seeds, bracelet]]]
 ]}
 outer past - NW of d2: {or: [
+    [fairies' woods, ages],
     [deku forest, or: [
         bracelet, 
-        feather]]
+        jump 1]]
 ]}
 outer past - NE of d2: {or: [deku forest]}
 outer past - bush SE of mystery tree: {or: [[deku forest, ember seeds]]}
@@ -123,7 +125,7 @@ crescent past E: {or: [
     outer past - crescent - SE cave,
     [crescent past S, or: [
         bracelet, 
-        feather]],
+        jump 1]],
     [outer past - crescent - stairs on cliff, or: [
         ages, 
         gale satchel]], # gales -> safe ledge drop
@@ -140,10 +142,10 @@ crescent past NW: {or: [
     crescent past E,
     [crescent past S, or: [
         bracelet, 
-        feather]],
+        jump 1]],
     [crescent present W, currents]
 ]}
-crescent past SW: {or: [
+crescent past SW: {or: [#portal zone
     open sea past, 
     all crescent, 
     raft,
@@ -155,10 +157,10 @@ crescent past SW: {or: [
 crescent past S: {or: [
     all crescent, 
     outer past - crescent - R coconut separated cave,
-    # outer past - crescent - central bomb cave, # currently oneway only
+    [outer past - crescent - central bomb cave, kill normal, or: [bombs, gale satchel]], # kill normal is to get back the items
     [crescent past E, or: [
         bracelet, 
-        feather]]
+        jump 1]]
 ]}
 outer past - crescent - shop: {or: [crescent past E]}
 outer past - crescent - face cave: {or: [
@@ -241,9 +243,9 @@ outer past - symmetry - SW house: {or: [past symmetry]}
 outer past - symmetry - S house: {or: [past symmetry]}
 outer past - symmetry - SE house: {or: [past symmetry]}
 outer tuni nut game: {or: [after water changing, ages]}
-outer past - cave below tuni guy: {or: [
-    [deku forest, feather], ages
-]} # Softlock potential: octo switch hook
+outer past - cave below tuni guy: {or: [ # below vine place
+    [deku forest, jump 1], ages, [switch hook, gale satchel, kill normal]
+]}
 outer past - talus peaks - big cave to water changes: {or: [
     [past symmetry, currents, bracelet],
     [ages, or: [
@@ -293,7 +295,7 @@ outer past - SW cave to upper goron: {or: [
     [switch hook, or: [
         outer past - SW goron - old zora, 
         ages, 
-        [lynna village, feather]]],
+        [lynna village, jump 1]]],
     [outer present - first cave to upper goron, ages],
     [goron upper past L, or: [
         non-entrance, 
@@ -374,13 +376,6 @@ inner past - mid goron - sword game: {or: []}
 inner past - mid goron - near seed tree: {or: []}
 
 # goron lower
-goron lower past water: [mermaid suit, or: [
-    outer past - SW goron - old zora,
-    [lynna village, feather],
-    [outer past - SW cave to upper goron, switch hook],
-    outer past - lower goron - leftmost cave,
-    outer past - dance cave
-]]
 goron lower past W: {or: [
     goron lower past water,
     outer past - lower goron - leftmost cave,
@@ -402,14 +397,12 @@ goron lower past E: {or: [
         [hard, jump 3], 
         flippers]],
     outer past - dance cave,
-    # outer past - lower goron old man, # currently oneway only
+    [outer past - lower goron old man, ember shooter], # may softlock
     [goron lower present, ages],
-    [ or: [
-          non-entrance, 
+    [ or: [non-entrance,
           gale satchel,
           currents], # present allows for safe ledge drop
-      or: [
-          outer past - mid goron - near seed tree,
+      or: [outer past - mid goron - near seed tree,
           outer past - mid goron - SW of bomb cave]]
 ]}
 outer past - lower goron - leftmost cave: {or: [goron lower past W]}

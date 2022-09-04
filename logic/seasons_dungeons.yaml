@@ -85,7 +85,7 @@ d3 water room: {or: [d3 mimic stairs, [d3 center, feather]]}
 d3 quicksand terrace: [d3 mimic stairs, feather]
 omuai owl: [mystery seeds, d3 mimic stairs, feather]
 d3 moldorm chest: [d3 mimic stairs, kill armored]
-d3 bombed wall chest: [d3 moldorm chest, bombs]
+d3 bombed wall chest: [d3 mimic stairs, bombs]
 trampoline owl: [mystery seeds, d3 center, feather]
 d3 trampoline chest: [d3 center, feather]
 d3 zol chest: [d3 center, feather]
@@ -103,15 +103,16 @@ enter d4: {or: []}
 # 0 keys
 d4 north of entrance: [inner d4, or: [flippers, cape]]
 d4 pot puzzle: [d4 north of entrance, bombs, bracelet]
-d4 maze chest: [d4 north of entrance, hit lever from minecart]
+d4 maze chest: [d4 north of entrance,
+    or: [hit lever from minecart, [hard, bracelet]]]
 d4 dark room: [d4 maze chest, feather]
 
 # 1 key
 d4 water ring room: [inner d4, or: [flippers, cape], bombs, d4 small key,
     or: [feather, hard], or: [bracelet, kill normal, [rod, boomerang]]]
 d4 roller minecart: [inner d4, feather, d4 small key, flippers]
-d4 pool: [d4 roller minecart, hit lever from minecart, flippers,
-    or: [kill normal, bracelet]]
+d4 pool: [d4 roller minecart, flippers, or: [kill normal, bracelet], 
+    or: [hit lever from minecart, [hard, bracelet]]]
 
 # 2 keys
 greater distance owl: [mystery seeds, d4 roller minecart,
@@ -146,7 +147,7 @@ d5 cart chest: [d5 cart bay, hit lever from minecart]
 d5 pot room: [inner d5, or: [[magnet gloves, bombs, feather],
     [d5 cart bay, or: [feather, [hard, pegasus satchel]]]]]
 d5 gibdo/zol chest: [d5 pot room, kill normal]
-d5 left chest: [inner d5, or: [magnet gloves, cape]]
+d5 left chest: [inner d5, or: [magnet gloves, cape], [hard, jump 3]]
 d5 terrace chest: [inner d5, or: [magnet gloves, [d5 cart bay, feather, bombs]]]
 armos knights owl: [mystery seeds, d5 terrace chest]
 d5 spiral chest: [inner d5, or: [shield, kill armored]]
@@ -155,7 +156,7 @@ d5 armos chest: [d5 terrace chest, kill armored]
 d5 spinner chest: [d5 cart bay, or: [magnet gloves, jump 6]]
 d5 drop ball: [d5 cart bay, hit lever from minecart, kill armored (pit)]
 # stalfos room means right side [where the chest is]
-d5 stalfos room: [d5 cart bay, or: [magnet gloves, cape]]
+d5 stalfos room: [or: [d5 cart bay, d5 pot room], or: [magnet gloves, cape]]
 
 # 5 keys
 d5 post-syger: [d5 stalfos room, kill armored]
@@ -170,10 +171,10 @@ d5 boss: [d5 post-syger, magnet gloves, d5 boss key, or: [feather, hard],
 enter d6: {or: []}
 
 # 0 keys
-d6 1F east: [inner d6]
+d6 1F east: [inner d6, or: [hard, feather, sword, bombs, expert's ring]]
 d6 rupee room: [inner d6, bombs]
+d6 1F terrace: {or: [inner d6, [magnet gloves, count: [2, d6 small key]]]}
 d6 magnet ball drop: [inner d6, or: [[magnet gloves, feather], cape]]
-d6 1F terrace: [inner d6]
 d6 crystal trap room: [inner d6]
 d6 U-room: [inner d6, break crystal, magic boomerang]
 d6 torch stairs: [d6 U-room, ember seeds]
@@ -247,9 +248,10 @@ d8 eye drop: [inner d8, break pot, or: [any slingshot,
     [hard, feather, or: [ember satchel, scent satchel, mystery satchel]]]]
 d8 three eyes chest: [inner d8, feather,
     or: [any hyper slingshot,
-        [hard, or: [ember satchel, scent satchel, mystery satchel]]]]
+        [hard, or: [ember seeds, scent seeds, mystery satchel]]]]
 d8 hardhat room: [inner d8, kill magunesu]
-d8 hardhat drop: [d8 hardhat room, kill hardhat (magnet)]
+d8 hardhat drop: [d8 hardhat room,
+    or: [[bombs, magnet gloves], [or: [slingshot, hard], gale seeds]]]
 
 # 1 key
 d8 spike room: [d8 hardhat room, d8 small key, or: [cape, [hard, jump 3]]]
@@ -263,7 +265,7 @@ d8 spinner chest: [d8 armos chest]
 frypolar owl: [mystery seeds, d8 armos chest]
 d8 darknut chest: [d8 armos chest, bombs, kill armored,
     or: [any hyper slingshot,
-        [hard, or: [ember satchel, scent satchel, mystery satchel]]]]
+        [hard, or: [ember seeds, scent seeds, mystery satchel]]]]
 
 # 3 keys
 d8 ice puzzle room: [d8 armos chest, count: [3, d8 small key], kill frypolar,

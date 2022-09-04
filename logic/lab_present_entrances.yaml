@@ -31,8 +31,8 @@ outer cave below tingle: {or: [
     open sea present, 
     ricky's gloves, 
     flute,
-    [feather, break bush],
-    [currents, or: [flippers, feather, outer cheval]]
+    [jump 1, break bush],
+    [currents, or: [flippers, jump 1, outer cheval]]
 ]}
 outer impa: {or: [start]}
 
@@ -150,7 +150,7 @@ outer nuun upper cave: {or: [
     [nuun, or: [
         [ricky nuun, or: [
             flute, 
-            [ feather, 
+            [ jump 1,
               or: [
                   sword, 
                   ember seeds, 
