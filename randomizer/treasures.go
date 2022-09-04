@@ -3,8 +3,6 @@ package randomizer
 import (
 	"bytes"
 	"fmt"
-
-	"gopkg.in/yaml.v2"
 )
 
 // treasure interaction spawn + collect modes. bits 0-2 are for collect
@@ -71,7 +69,7 @@ func (t treasure) check(b []byte) error {
 
 	addr, data := t.addr.fullOffset(), t.bytes()
 	if bytes.Compare(b[addr:addr+4], data) != 0 {
-		return fmt.Errorf("expected %x at %x; found %x",
+		return fmt.Errorf("expected treasure %x at %x; found %x",
 			data, addr, b[addr:addr+4])
 	}
 	return nil

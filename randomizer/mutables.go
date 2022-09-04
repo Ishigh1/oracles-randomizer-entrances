@@ -29,7 +29,7 @@ func (mut *mutableRange) check(b []byte) error {
 	offset := mut.addr.fullOffset()
 	for i, value := range mut.old {
 		if b[offset+i] != value {
-			return fmt.Errorf("expected %x at %x; found %x",
+			return fmt.Errorf("expected mutable %x at %x; found %x",
 				mut.old[i], offset+i, b[offset+i])
 		}
 	}

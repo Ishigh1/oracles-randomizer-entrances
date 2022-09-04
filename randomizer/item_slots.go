@@ -2,8 +2,6 @@ package randomizer
 
 import (
 	"fmt"
-
-	"gopkg.in/yaml.v2"
 )
 
 // an item slot (chest, gift, etc). it references room data and treasure data.
@@ -30,7 +28,7 @@ func (mut *itemSlot) mutate(b []byte) {
 // helper function for itemSlot.check()
 func checkByte(b []byte, addr address, value byte) error {
 	if b[addr.fullOffset()] != value {
-		return fmt.Errorf("expected %x at %x; found %x",
+		return fmt.Errorf("expected byte %x at %x; found %x",
 			value, addr.fullOffset(), b[addr.fullOffset()])
 	}
 	return nil
