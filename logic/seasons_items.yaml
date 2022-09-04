@@ -75,7 +75,7 @@ bombs: {or: [
     ["bombs, 10", or: [shovel, bracelet, break flower, flute]]]}
 
 # jump x pit tiles
-jump 1: { feather }
+jump 1: [feather]
 jump 2: {feather, or: [hard, pegasus satchel]}
 jump 3: {or: [[hard, feather, pegasus satchel], cape]}
 jump 4: {cape, or: [[hard, pegasus satchel]]}
