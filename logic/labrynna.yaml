@@ -1,438 +1,448 @@
 # this all assumes that you start in the forest of time and that the time
 # portals on the screens next to the maku tree are always active.
 
-start: [] # parent for nodes reachable by default
-hard: {or: []}
-non-entrance: {or: []}
+start: [ ] # parent for nodes reachable by default
+hard: { or: [ ] }
+non-entrance: { or: [ ] }
 
 # forest of time
-starting chest: [start]
-nayru's house: [inner impa]
+starting chest: [ start ]
+nayru's house: [ inner impa ]
 
 # lynna / south shore / palace
-lynna city: {or: [
-    break bush, 
-    flute, 
-    echoes, 
-    lynna village,
-    outer present - lynna - NW house,
-    outer present - lynna - W house,
-    outer present - lynna - frozen grandson house,
-    outer present - mayors house,
-    outer present - ring shop,
-    outer present - lynna - SW house,
-    outer present - baby house L,
-    outer present - baby house R,
-    # outer present - maku tree cave,
-    # [outer present - maku tree stairs, maku tree],
-    outer present - lynna shop R,
-    open sea present,
-    fairies' woods
-]}
-lynna village: {or: [
-    echoes, 
-    lynna city,  # lynna city due to unrandomized present maku path
-    [outer past - maku tree cave, shovel],
-    [outer past - maku tree stairs, or: [rescue nayru, maku tree]],
-    outer past - lynna - gba shop,
-    outer past - lynna - NW house,
-    outer past - lynna - W house,
-    outer past - lynna - dark house with boy,
-    outer past - lynna - postman house,
-    outer past - lynna - S house,
-    outer past - lynna - sword game,
-    [feather, or: [
-        goron lower past water,
-        [switch hook, or: [
-            outer past - SW goron - old zora,
-            outer past - SW cave to upper goron]]]],
-    open sea past,
-    [outer cheval, or: [feather, flippers]],
-    outer raft guy L,
-    outer palace L, # get caught on purpose, Lynna Village always leads
-    outer palace M, # back to the starting area, so no explicit
-    outer palace R, # return path is necessary
-    [deku forest, bracelet],
-]}
-black tower worker: [lynna village]
-black tower hp: [lynna village, shovel]
-maku tree: {or: [
-    rescue nayru, 
-    [outer past - maku tree stairs, kill normal]
-]}
-south lynna tree: [lynna city, seed item, or: [
-    sword, 
-    punch object, 
-    dimitri's flute, 
-    [hard, break bush]]]
-lynna city chest: {or: [ember seeds, currents]}
-shore present: {or: [
-    outer cave below tingle, 
-    flute, 
-    ricky's gloves, 
-    [break bush, feather],
-    [lynna city, bracelet], 
-    [currents, or: [
-        feather, 
-        flippers, 
-        raft]],
-    [ages, break bush], 
-    open sea present
-]}
-south shore dirt: [shore present, or: [shovel, flute]]
-balloon guy: [outer tingle stairs, feather, or: [sword, boomerang]]
-balloon guy's gift: [balloon guy]
-seed type: {or: [
-    ember seeds, scent seeds, 
-    pegasus seeds, gale seeds, 
-    mystery seeds
-]}
-balloon guy's upgrade: [balloon guy, count: [3, seed type]]
-raft: [inner raft guy L, cheval rope, island chart, outer raft guy R]
-shop, 30 rupees: [inner present - lynna shop R, or: [
-    count: [30, fixed rupees], 
-    [hard, shovel]]]
-shop, 150 rupees: [inner present - lynna shop R, or: [
-    count: [180, fixed rupees], 
-    [hard, shovel]]]
-ambi's palace tree: [lynna village, seed item, or: [
-    sword, 
-    punch object]]
-ambi's palace chest: [inner palace]
-rescue nayru: [ambi's palace chest, mystery seeds, switch hook, or: [
-    sword, 
-    punch enemy]]
-mayor plen's house: [inner present - mayors house, long hook]
-essences: {or: [
-    d1 boss, d2 boss, 
-    d3 boss, d4 boss, 
-    d5 boss, d6 boss, 
-    d7 boss, d8 boss
-]}
-maku seed: [count: [8, essences]]
+lynna city: { or: [
+  break bush,
+  flute,
+  echoes,
+  lynna village,
+  outer present - lynna - NW house,
+  outer present - lynna - W house,
+  outer present - lynna - frozen grandson house,
+  outer present - mayors house,
+  outer present - ring shop,
+  outer present - lynna - SW house,
+  outer present - baby house L,
+  outer present - baby house R,
+  # outer present - maku tree cave,
+  # [outer present - maku tree stairs, maku tree],
+  outer present - lynna shop R,
+  open sea present,
+  fairies' woods
+] }
+lynna village: { or: [
+  echoes,
+  lynna city,  # lynna city due to unrandomized present maku path
+  [ outer past - maku tree cave, shovel ],
+  [ outer past - maku tree stairs, or: [ rescue nayru, maku tree ] ],
+  outer past - lynna - gba shop,
+  outer past - lynna - NW house,
+  outer past - lynna - W house,
+  outer past - lynna - dark house with boy,
+  outer past - lynna - postman house,
+  outer past - lynna - S house,
+  outer past - lynna - sword game,
+  [ feather, or: [
+    goron lower past water,
+    [ switch hook, or: [
+      outer past - SW goron - old zora,
+      outer past - SW cave to upper goron ] ] ] ],
+  open sea past,
+  [ outer cheval, or: [ feather, flippers ] ],
+  outer raft guy L,
+  outer palace L, # get caught on purpose, Lynna Village always leads
+  outer palace M, # back to the starting area, so no explicit
+  outer palace R, # return path is necessary
+  [ deku forest, bracelet ],
+] }
+black tower worker: [ lynna village ]
+black tower hp: [ lynna village, shovel ]
+maku tree: { or: [
+  rescue nayru,
+  [ outer past - maku tree stairs, kill normal ]
+] }
+south lynna tree: [ lynna city, seed item, or: [
+  sword,
+  punch object,
+  dimitri's flute,
+  [ hard, break bush ] ] ]
+lynna city chest: { or: [ ember seeds, currents ] }
+shore present: { or: [
+  outer cave below tingle,
+  flute,
+  ricky's gloves,
+  [ break bush, feather ],
+  [ lynna city, bracelet ],
+  [ currents, or: [
+    feather,
+    flippers,
+    raft ] ],
+  [ ages, break bush ],
+  open sea present
+] }
+south shore dirt: [ shore present, or: [ shovel, flute ] ]
+balloon guy: [ outer tingle stairs, feather, or: [ sword, boomerang ] ]
+balloon guy's gift: [ balloon guy ]
+seed type: { or: [
+  ember seeds, scent seeds,
+  pegasus seeds, gale seeds,
+  mystery seeds
+] }
+balloon guy's upgrade: [ balloon guy, count: [ 3, seed type ] ]
+raft: [ inner raft guy L, cheval rope, island chart, outer raft guy R ]
+shop, 30 rupees: [ inner present - lynna shop R, or: [
+  count: [ 30, fixed rupees ],
+  [ hard, shovel ] ] ]
+shop, 150 rupees: [ inner present - lynna shop R, or: [
+  count: [ 180, fixed rupees ],
+  [ hard, shovel ] ] ]
+ambi's palace tree: [ lynna village, seed item, or: [
+  sword,
+  punch object ] ]
+ambi's palace chest: [ inner palace ]
+rescue nayru: [ ambi's palace chest, mystery seeds, switch hook, or: [
+  sword,
+  punch enemy ] ]
+mayor plen's house: [ inner present - mayors house, long hook ]
+essences: { or: [
+  d1 boss, d2 boss,
+  d3 boss, d4 boss,
+  d5 boss, d6 boss,
+  d7 boss, d8 boss
+] }
+maku seed: [ count: [ 8, essences ] ]
 
 # yoll graveyard
-yoll graveyard: {or: [  # west graveyard
-    ember seeds, # from vanilla way
-    [outer under cheval grave, or: [ # from cheval's grave
-        bomb jump 3,
-        [bracelet, feather, or: [
-            moosh's flute,
-            kill switch hook]]]]
-]}
-cheval's grave: [yoll graveyard, or: [
-    kill switch hook, 
+yoll graveyard: { or: [ # west graveyard
+  ember seeds, # from vanilla way
+  [ outer under cheval grave, or: [ # from cheval's grave
     bomb jump 3,
-    moosh's flute
-]]
-cheval's test: [inner under cheval grave, bracelet, or: [feather, flippers]]
-cheval's invention: [inner under cheval grave, flippers]
-grave under tree: [inner stairs near d1, ember seeds]
-syrup: [inner witch hut, or: [
-    count: [480, fixed rupees], 
-    [hard, shovel]
-]]
-graveyard poe: [outer ghost grave]
-d1 entrance: [gravekey]
-graveyard hp: [yoll graveyard, bracelet]
+    [ bracelet, feather, or: [
+      moosh's flute,
+      kill switch hook ] ] ] ]
+] }
+cheval's grave: [ yoll graveyard, or: [
+  kill switch hook,
+  bomb jump 3,
+  moosh's flute
+] ]
+cheval's test: [ inner under cheval grave, bracelet, or: [ feather, flippers ] ]
+cheval's invention: [ inner under cheval grave, flippers ]
+grave under tree: [ inner stairs near d1, ember seeds ]
+syrup: [ inner witch hut, or: [
+  count: [ 480, fixed rupees ],
+  [ hard, shovel ]
+] ]
+graveyard poe: [ outer ghost grave ]
+d1 entrance: [ gravekey ]
+graveyard hp: [ yoll graveyard, bracelet ]
 
 # western woods
-fairies' woods: {or: [
-    bracelet, 
-    dimitri's flute, 
-    ages, 
-    outer mask house,
-    [hard, switch hook], # octo clip in hard logic :D
-    [lynna city, flippers],
-    [ nuun, 
-      or: [
-          hit lever, 
-          ricky's flute, 
-          moosh's flute],
-      or: [
-          currents, 
-          dimitri nuun,
-          [ricky nuun, or: [break bush, flute]],
-          [moosh nuun, or: [feather, flute]]]],
-    [currents, or: [
-        deku forest,
-        outer past - NE of mystery tree, 
-        outer past - NW of d2, 
-        outer past - NE of d2, 
-        outer above mystery tree - L stairs, 
-        outer above mystery tree - R stairs, 
-        outer past - cave below tuni guy,
-        talus peaks chest]]
-]}
-fairies' woods chest: {or: [
-    [deku forest, currents],
-    [fairies' woods, or: [
-        feather, 
-        ricky's flute, 
-        moosh's flute, 
-        switch hook]]
-]}
-deku forest: {or: [
-    bracelet, 
-    ages,
-    outer past - NE of d2,
-    [outer past - NE of mystery tree, or: [switch hook, feather]],
-    [feather, or: [
-        outer past - cave below tuni guy,
-        outer past - NW of d2]]
-]}
-deku forest cave east: [inner past - NW of d2]
-deku forest cave west: [bracelet, inner past - NE of mystery tree]
-deku forest tree: [
-    seed item,
+fairies' woods: { or: [
+  bracelet,
+  dimitri's flute,
+  ages,
+  outer mask house,
+  [ hard, switch hook ], # octo clip in hard logic :D
+  [ lynna city, flippers ],
+  [ nuun,
     or: [
-        outer above mystery tree - R stairs, 
-        [gale satchel, or: [
-            deku forest,
-            outer above mystery tree - L stairs, 
-            [outer past - NE of mystery tree, bracelet]]]], 
-    or: [sword, punch object]
+      hit lever,
+      ricky's flute,
+      moosh's flute ],
+    or: [
+      currents,
+      dimitri nuun,
+      [ ricky nuun, or: [ break bush, flute ] ],
+      [ moosh nuun, or: [ feather, flute ] ] ] ],
+  [ currents, or: [
+    deku forest,
+    outer past - NE of mystery tree,
+    outer past - NW of d2,
+    outer past - NE of d2,
+    outer above mystery tree - L stairs,
+    outer above mystery tree - R stairs,
+    outer past - cave below tuni guy,
+    talus peaks chest ] ]
+] }
+fairies' woods chest: { or: [
+  [ deku forest, currents ],
+  [ fairies' woods, or: [
+    feather,
+    ricky's flute,
+    moosh's flute,
+    switch hook ] ]
+] }
+deku forest: { or: [
+  bracelet,
+  ages,
+  outer past - NE of d2,
+  [ outer past - NE of mystery tree, or: [ switch hook, feather ] ],
+  [ feather, or: [
+    outer past - cave below tuni guy,
+    outer past - NW of d2 ] ]
+] }
+deku forest cave east: [ inner past - NW of d2 ]
+deku forest cave west: [ bracelet, inner past - NE of mystery tree ]
+deku forest tree: [
+  seed item,
+  or: [
+    outer above mystery tree - R stairs,
+    [ gale satchel, or: [
+      deku forest,
+      outer above mystery tree - L stairs,
+      [ outer past - NE of mystery tree, bracelet ] ] ] ],
+  or: [ sword, punch object ]
 ]
-deku forest owl: [mystery seeds, deku forest tree]
-deku forest soldier: [deku forest, mystery seeds]
+deku forest owl: [ mystery seeds, deku forest tree ]
+deku forest soldier: [ deku forest, mystery seeds ]
 # TODO: not yet sure how swapping will work with past d2
-d2 entrance: [deku forest, or: [currents, bombs]]
-deku forest bush cave hp: [inner past - bush SE of mystery tree]
+d2 entrance: [ deku forest, or: [ currents, bombs ] ]
+deku forest bush cave hp: [ inner past - bush SE of mystery tree ]
 
 # crescent island
 # the western present portal responds to currents only, in order to prevent
 # softlocks.
-all crescent: [ages, or: [
-    crescent past E, 
-    crescent past NW, 
-    crescent past SW, 
-    crescent past S,
-    crescent present W, 
-    crescent present E
-]]
-tokay crystal cave: [inner past - crescent - 1st cave, feather, or: [
-    shovel, 
-    break crystal]
+all crescent: [ ages, or: [
+  crescent past E,
+  crescent past NW,
+  crescent past SW,
+  crescent past S,
+  crescent present W,
+  crescent present E
+] ]
+tokay crystal cave: [ inner past - crescent - 1st cave, feather, or: [
+  shovel,
+  break crystal ]
 ]
-tokay bomb cave: [inner past - crescent - E stairs after boulder, bombs]
-wild tokay game: [inner past - crescent - E bomb cave, bracelet, farm rupees]
+tokay bomb cave: [ inner past - crescent - E stairs after boulder, bombs ]
+wild tokay game: [ inner past - crescent - E bomb cave, bracelet, farm rupees ]
 # can get the warp point by swimming under crescent island, but that's pretty
 # unintuitive.
 crescent island plant seedling: [
-    crescent past NW, 
-    scent seedling, 
-    or: [ages, bracelet]
+  crescent past NW,
+  scent seedling,
+  or: [ ages, bracelet ]
 ]
 crescent island reach tree: [
-    crescent island plant seedling,
-    or: [
-        crescent present E,
-        [hard, gale satchel, outer present underwater - crescent island]]
+  crescent island plant seedling,
+  or: [
+    crescent present E,
+    [ hard, gale satchel, outer present underwater - crescent island ] ]
 ]
 crescent island tree: [
-    crescent island reach tree,
-    seed item,
-    or: [sword, punch object]
+  crescent island reach tree,
+  seed item,
+  or: [ sword, punch object ]
 ]
-d3 entrance: [crescent present W]
-hidden tokay cave: [inner past - crescent - iron shield cave, flippers]
-under crescent island: [inner present underwater - crescent island]
-tokay pot cave: [inner past - crescent - SE cave, long hook]
+d3 entrance: [ crescent present W ]
+hidden tokay cave: [ inner past - crescent - iron shield cave, flippers ]
+under crescent island: [ inner present underwater - crescent island ]
+tokay pot cave: [ inner past - crescent - SE cave, long hook ]
 
 # nuun / symmetry city / talus peaks
-ricky nuun: {or: []}
-dimitri nuun: {or: []}
-moosh nuun: {or: []}
-nuun: {or: [
-    [lynna village, currents],
-    [fairies' woods, ember shooter, or: [
-        [ricky nuun, or: [break bush, flute]],
-        dimitri nuun,
-        [moosh nuun, or: [feather, flute]]]],
-    [outer nuun upper cave, or: [
-        echoes,
-        gale satchel,
-        flute,
-        [ricky nuun, break bush, hit lever], # [bombs, feather] not in logic 
-                                             # because 0 bombs could softlock
-        [dimitri nuun, or: [
-            hit lever, 
-            [flippers, swimmer's ring]]],
-        [moosh nuun, or: [
-            [feather, hit lever], 
-            [break bush, jump 3]]]]],
-    [outer nuun lower cave - Ricky, or: [
-        flute,
-        [break bush, feather, or: [
-            echoes,
-            gale satchel,
-            hit lever]]]],
-    [outer nuun lower cave - Moosh, or: [
-        flute, 
-        [break bush, jump 3]]]
-]}
-nuun highlands cave: {or: [
-    [nuun, dimitri's flute],
-    inner nuun lower cave - Ricky,
-    inner nuun lower cave - Moosh
-]}
-symmetry city tree: [seed item, present symmetry, or: [
-    sword, 
-    punch object, 
-    [dimitri's flute, d4 entrance]
-]]
+ricky nuun: { or: [ ] }
+dimitri nuun: { or: [ ] }
+moosh nuun: { or: [ ] }
+nuun: { or: [
+  [ lynna village, currents ],
+  [ fairies' woods, ember shooter, or: [
+    [ ricky nuun, or: [ break bush, flute ] ],
+    dimitri nuun,
+    [ moosh nuun, or: [ feather, flute ] ] ] ],
+  [ outer nuun upper cave, or: [
+    echoes,
+    gale satchel,
+    flute,
+    [ ricky nuun, break bush, hit lever ], # [bombs, feather] not in logic
+    # because 0 bombs could softlock
+    [ dimitri nuun, or: [
+      hit lever,
+      [ flippers, swimmer's ring ] ] ],
+    [ moosh nuun, or: [
+      [ feather, hit lever ],
+      [ break bush, jump 3 ] ] ] ] ],
+  [ outer nuun lower cave - Ricky, or: [
+    flute,
+    [ break bush, feather, or: [
+      echoes,
+      gale satchel,
+      hit lever ] ] ] ],
+  [ outer nuun lower cave - Moosh, or: [
+    flute,
+    [ break bush, jump 3 ] ] ]
+] }
+nuun highlands cave: { or: [
+  [ nuun, dimitri's flute ],
+  inner nuun lower cave - Ricky,
+  inner nuun lower cave - Moosh
+] }
+symmetry city tree: [ seed item, present symmetry, or: [
+  sword,
+  punch object,
+  [ dimitri's flute, d4 entrance ]
+] ]
 symmetry city brother: [
-    inner past - symmetry - S house,
-    inner past - symmetry - NE house,
-    inner past - symmetry - NW house]
-tokkey's composition: [inner tokkey dive spot, flippers, echoes]
-talus peaks hp: [past symmetry, currents]
-cave below tuni guy hp: [inner past - cave below tuni guy, feather]
+  inner past - symmetry - S house,
+  inner past - symmetry - NE house,
+  inner past - symmetry - NW house ]
+tokkey's composition: [ inner tokkey dive spot, flippers, echoes ]
+talus peaks hp: [ past symmetry, currents ]
+cave below tuni guy hp: [ inner past - cave below tuni guy, feather ]
 after water changing: [
-    outer past - talus peaks - big cave to water changes,  # push plant
-    currents, flippers,  # base reqs traveling around
-    outer past - talus peaks - R water change cave,  # fill R with water
+  outer past - talus peaks - big cave to water changes,  # push plant
+  currents, flippers,  # base reqs traveling around
+  outer past - talus peaks - R water change cave,  # fill R with water
 ]
-patch: [inner tuni nut game, or: [
-    sword,
-    [hard, or: [
-        shield, 
-        boomerang, 
-        switch hook, 
-        scent seeds, 
-        shovel]]
-]]
-talus peaks chest: {or: [
-    ages, 
-    [currents, outer tuni nut game]
-]}
-d4 entrance: [present symmetry, tuni nut, patch, 
-    inner past - symmetry - S house]
+patch: [ inner tuni nut game, or: [
+  sword,
+  [ hard, or: [
+    shield,
+    boomerang,
+    switch hook,
+    scent seeds,
+    shovel ] ]
+] ]
+talus peaks chest: { or: [
+  ages,
+  [ currents, outer tuni nut game ]
+] }
+d4 entrance: [ present symmetry, tuni nut, patch,
+               inner past - symmetry - S house ]
 
 # rolling ridge. what a nightmare
-goron elder: [bomb flower, inner past - SW cave to upper goron]
-NE rolling ridge hp: [outer present - upper goron - R rock-separated caves]
-rolling ridge hp in wall: [bombs,
-    inner present - NW goron - under peg tree cave
+goron elder: [ bomb flower, inner past - SW cave to upper goron ]
+NE rolling ridge hp: [ outer present - upper goron - R rock-separated caves ]
+rolling ridge hp in wall: [ bombs,
+                            inner present - NW goron - under peg tree cave
 ]
-ridge west cave: [inner present - NW goron - under peg tree stairs]
-rolling ridge west tree: [goron upper past L, 
-    seed item, or: [sword, punch object]
+ridge west cave: [ inner present - NW goron - under peg tree stairs ]
+rolling ridge west tree: [ goron upper past L,
+                           seed item, or: [ sword, punch object ]
 ]
-under moblin keep: [goron upper present L, feather, flippers]
-defeat great moblin: [goron upper present L, pegasus satchel, bracelet]
-d5 entrance: [crown key, goron upper present M]
-ridge base past: [bombs, inner past - lower goron - leftmost cave]
-d6 present entrance: [old mermaid key, inner present - lower goron - d6 cave]
-pool in d6 entrance: [inner present - lower goron - d6 cave, mermaid suit]
-goron dance present: [inner present - lower goron - dance cave, farm rupees]
-goron dance, with letter: [inner past - dance cave, goron letter, farm rupees]
-target carts: [inner present - mid goron - carts, farm rupees]
-target carts 1: [target carts]
-target carts 2: [target carts]
-goron shooting gallery: [inner past - mid goron - sword game, sword]
+under moblin keep: [ goron upper present L, feather, flippers ]
+defeat great moblin: [ goron upper present L, pegasus satchel, bracelet ]
+d5 entrance: [ crown key, goron upper present M ]
+ridge base past: [ bombs, inner past - lower goron - leftmost cave ]
+d6 present entrance: [ old mermaid key, inner present - lower goron - d6 cave ]
+pool in d6 entrance: [ inner present - lower goron - d6 cave, mermaid suit ]
+goron dance present: [ inner present - lower goron - dance cave, farm rupees ]
+goron dance, with letter: [ inner past - dance cave, goron letter, farm rupees ]
+target carts: [ inner present - mid goron - carts, farm rupees ]
+target carts 1: [ target carts ]
+target carts 2: [ target carts ]
+goron shooting gallery: [ inner past - mid goron - sword game, sword ]
 rolling ridge east tree: [
-    outer past - mid goron - near seed tree,
-    seed item, or: [sword, punch object]
+  outer past - mid goron - near seed tree,
+  seed item, or: [ sword, punch object ]
 ]
-rolling ridge past old man: [inner past - lower goron old man]
-d6 past entrance: [mermaid key, or: [
-    goron lower past water,
-    [goron lower past W, or: [flippers, [ages, feather], [hard, bomb jump 2]]]
-]]
-ridge diamonds past: [inner past - lower goron - leftmost cave, switch hook]
-bomb goron head: [inner past - upper goron - bomb cave]
+rolling ridge past old man: [ inner past - lower goron old man ]
+d6 past entrance: [ mermaid key, or: [
+  goron lower past water,
+  [ goron lower past W, or: [ flippers, [ ages, feather ], [ hard, bomb jump 2 ] ] ]
+] ]
+ridge diamonds past: [ inner past - lower goron - leftmost cave, switch hook ]
+bomb goron head: [ inner past - upper goron - bomb cave ]
 big bang game: [
-    inner present - mid goron - leftmost cave, goronade, farm rupees
+  inner present - mid goron - leftmost cave, goronade, farm rupees
 ]
-ridge NE cave present: [inner present - mid goron - leftmost cave]
+ridge NE cave present: [ inner present - mid goron - leftmost cave ]
 trade rock brisket: [
-    inner present - lower goron - dance cave, brother emblem, rock brisket
+  inner present - lower goron - dance cave, brother emblem, rock brisket
 ]
-trade goron vase: [brother emblem, goron vase, inner past - dance cave]
-trade lava juice: [lava juice, inner past - mid goron - SW of bomb cave]
-goron's hiding place: [inner present - first cave to upper goron, bombs]
-ridge base chest: [inner present - first cave to upper goron]
-goron diamond cave: [inner present - mid goron - leftmost cave, 
-    or: [switch hook, jump 3]
+trade goron vase: [ brother emblem, goron vase, inner past - dance cave ]
+trade lava juice: [ lava juice, inner past - mid goron - SW of bomb cave ]
+goron's hiding place: [ inner present - first cave to upper goron, bombs ]
+ridge base chest: [ inner present - first cave to upper goron ]
+goron diamond cave: [ inner present - mid goron - leftmost cave,
+                      or: [ switch hook, jump 3 ]
 ]
-ridge bush cave: [inner past - mid goron - SW of bomb cave, switch hook]
+ridge bush cave: [ inner past - mid goron - SW of bomb cave, switch hook ]
 
 # zora village / zora seas. only accessible with tune of ages, so no
 # distinctions between past and present are necessary.
 # zora village: [mermaid suit, ages, switch hook]
 zora village tree: [
-    seed item,
-    or: [
-        present overwater zora, 
-        past overwater zora, 
-        clean dimitri, 
-        [gale satchel, or: [
-            present underwater zora, 
-            past underwater zora]]], 
-    or: [
-        sword, 
-        punch object, 
-        [dimitri's flute, clean seas]]
+  seed item,
+  or: [
+    present overwater zora,
+    past overwater zora,
+    clean dimitri,
+    [ gale satchel, or: [
+      present underwater zora,
+      past underwater zora ] ] ],
+  or: [
+    sword,
+    punch object,
+    [ dimitri's flute, clean seas ] ]
 ]
-zora village present: [present overwater zora, mermaid suit]
-zora palace chest: [inner present underwater - zora palace]
-zora NW cave: [inner present - zora vill - NW bomb cave, power glove]
-fairies' coast chest: [present overwater zora, or: [
-    flippers, # flippers only because you could clean raft and time travel
-    clean dimitri
-]]
+zora village present: [ present overwater zora, mermaid suit ]
+zora palace chest: [ inner present underwater - zora palace ]
+zora NW cave: [ inner present - zora vill - NW bomb cave, power glove ]
+fairies' coast chest: [ present overwater zora, or: [
+  flippers, # flippers only because you could clean raft and time travel
+  clean dimitri
+] ]
 # in hard logic, farm kills and get a potion off maple
 king zora: [
-    inner past underwater - zora palace, 
-    inner present underwater - zora palace, 
-    or: [syrup, hard]
+  inner past underwater - zora palace,
+  inner present underwater - zora palace,
+  or: [ syrup, hard ]
 ]
-library present: [inner present - library]
-library past: [inner past - library, or: [
-    book of seals,
-    bomb jump 3
-]]
-clean seas: [inner past - octo fairy cave, fairy powder]
-zora seas chest: [clean seas, past overwater zora, mermaid suit, currents]
-d7 entrance: [king zora, clean seas, present underwater zora]
-fisher's island cave: [inner past underwater - moving island, long hook]
-zora's reward: [past underwater zora, d7 boss]
+library present: [ inner present - library ]
+library past: [ inner past - library, or: [
+  book of seals,
+  bomb jump 3
+] ]
+clean seas: [ inner past - octo fairy cave, fairy powder ]
+zora seas chest: [ clean seas, past overwater zora, mermaid suit, currents ]
+d7 entrance: [ king zora, clean seas, present underwater zora ]
+fisher's island cave: [ inner past underwater - moving island, long hook ]
+zora's reward: [ past underwater zora, d7 boss ]
 
 # sea of storms / sea of no return
 # These 2 to connect all regions that do not connect to each other 
 # outside of mermaid suit
-open sea present land: {or: [  # for dimitri/mermaid suit
-    crescent present W, 
-    lynna city, 
-    shore present
-]}
-open sea present: [mermaid suit, or: [
-    open sea present land, 
-    outer present - moving island,
-    outer present underwater - crescent island,
-    [present overwater zora, clean seas]
+open sea present land: { or: [ # for dimitri/mermaid suit
+  crescent present W,
+  lynna city,
+  shore present
+] }
+open sea present: [ mermaid suit, or: [
+  open sea present land,
+  outer present - moving island,
+  outer present underwater - crescent island,
+  [ present overwater zora, clean seas ]
+] ]
+open sea past land: { or: [
+  lynna village,
+  outer raft guy R,
+  crescent past NW,
+  crescent past SW,
+  crescent past E
+] }
+open sea past: [ mermaid suit, or: [
+  open sea past land,
+  outer past - crescent - iron shield cave,
+  [ clean seas, or: [
+    past overwater zora,
+    past library island ] ],
+  [ outer past underwater - pirate cave, zora scale ],
+  [ outer past underwater - cave S of d8, feather ]
+] ]
+
+goron lower past water: [mermaid suit, or: [ #Sea of gorons on right
+  outer past - SW goron - old zora,
+  [lynna village, feather],
+  [outer past - SW cave to upper goron, switch hook],
+  outer past - lower goron - leftmost cave,
+  outer past - dance cave
 ]]
-open sea past land: {or: [
-    lynna village, 
-    outer raft guy R,
-    crescent past NW, 
-    crescent past SW, 
-    crescent past E
-]}
-open sea past: [mermaid suit, or: [
-    open sea past land, 
-    outer past - crescent - iron shield cave,
-    [clean seas, or: [
-        past overwater zora, 
-        past library island]],
-    [outer past underwater - pirate cave, zora scale],
-    [outer past underwater - cave S of d8, feather] 
-]]
-piratian captain: [mermaid suit, zora scale, or: [
-    open sea past, 
-    outer past underwater - pirate cave
-]]
-sea of storms past: [inner past underwater - pirate cave]
-d8 entrance: [mermaid suit, outer past underwater - cave S of d8]
-sea of no return: [outer d8, power glove]
+
+]
+piratian captain: [ mermaid suit, zora scale, or: [
+  open sea past,
+  outer past underwater - pirate cave
+] ]
+sea of storms past: [ inner past underwater - pirate cave ]
+d8 entrance: [ mermaid suit, outer past underwater - cave S of d8 ]
+sea of no return: [ outer d8, power glove ]

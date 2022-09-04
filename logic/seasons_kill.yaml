@@ -53,6 +53,7 @@ kill agunima: [ember seeds, kill armored]
 hit very far lever: {or: [magic boomerang, any slingshot]}
 kill gohma: [or: [slingshot, hard], or: [scent seeds, ember seeds]]
 break mushroom: {or: [magic boomerang, bracelet]}
+break mushroom outside: {or: [break mushroom, dimitri's flute]}
 kill armored (pit): {or: [kill armored, shield]}
 break crystal: {or: [sword, bombs, bracelet, expert's ring]}
 kill hardhat (magnet): {or: [magnet gloves,

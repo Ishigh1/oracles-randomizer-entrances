@@ -45,26 +45,26 @@ outside d7 hp: [
     or: [western coast default autumn, [non-entrance, coast stump, autumn]]]
 
 # eastern suburbs
-suburbs: {or: [ # this is the area south of the pool by sokra's stump
+suburbs: {or: [ # this is the area south of the pool by sokra's stump, where like like are
     outer windmill main entrance,
     [outer windmill entrance above main entrance, or: [winter, eastern suburbs default winter]],
     [horon village, ember seeds],
     [outer fixed quicksand, inner pirate house - main entrance],
     [exit eastern suburbs portal, break bush],
     [fairy fountain, or: [eastern suburbs default winter, winter,
-        flippers, feather, ricky's flute, dimitri's flute]]]}
+        flippers, jump 1, ricky's flute, dimitri's flute]]]}
 fairy fountain: {or: [
     [sunken city,
         or: [eastern suburbs default spring, spring, gale satchel]],
     [suburbs, or: [eastern suburbs default winter, winter,
-        flippers, feather, ricky's flute, dimitri's flute]]]}
+        flippers, jump 1, ricky's flute, dimitri's flute]]]}
 moblin road: {or: [
     outer ww cave under sunken,
     [fairy fountain, or: [eastern suburbs default winter, winter]],
     ]}
 holly's house: [inner shovel girl main entrance]
-central woods of winter: {or: [[outer d2, break bush], [fairy fountain, or: [
-    shovel, feather, flute, spring, summer, autumn,
+central woods of winter: {or: [[outer d2, break bush], [fairy fountain, or: [ #Where D2 is
+    shovel, jump 1, flute, spring, summer, autumn,
     [flippers, or: [
         eastern suburbs default spring,
         eastern suburbs default summer,
@@ -85,26 +85,37 @@ eastern suburbs, on cliff: [inner suburbs stairs past blooming flower,
     or: [cape, [hard, bomb jump 2], magnet gloves]]
 woods of winter, 2nd cave: [inner ww cave under sunken, or: [flippers, bomb jump 3]]
 windmill hp: [inner windmill entrance above main entrance]
-winter woods hp: [or: [bracelet, feather, flippers, dimitri's flute, [hard, ricky's flute]], moblin road]
+winter woods hp: [or: [bracelet, jump 1, flippers, dimitri's flute, [hard, ricky's flute]], moblin road]
 
 # holodrum plain
-ghastly stump: {or: [outer mrs ruul, [north swamp, summer],
-    [blaino's gym, or: [feather, ricky, flute,
-        [flippers, break bush], holodrum plain default winter]],
-    [south swamp, or: [[break bush, flippers], dimitri's flute]]]}
+ghastly stump: {or: #D10
+    [outer mrs ruul,
+    [north swamp, or: [
+        holodrum plain default summer,
+        [gale satchel, or: [kill normal, break bush]],
+        summer]],
+    [blaino's gym, or: [
+        jump 1,
+        ricky,
+        flute,
+        [flippers, break bush],
+        holodrum plain default winter]],
+    [south swamp, or: [
+        [break bush, flippers],
+        dimitri's flute]]]}
 blaino's gym: {or: [
     outer blaino,
-    [outer natzu fairy cave - Ricky, or: [feather, flippers, flute]],
-    [outer natzu fairy cave - Moosh, or: [feather, flippers, flute]],
-    [outer natzu deku cave - Moosh, or: [flute, [break bush, bomb jump 3], [hard, cape], jump 6]],
+    [outer natzu fairy cave - Ricky, or: [jump 1, flippers, flute]],
+    [outer natzu fairy cave - Moosh, or: [jump 1, flippers, flute]],
+    [outer natzu deku cave - Moosh, or: [flute, [break bush, bomb jump 3], jump 4]],
     [outer natzu fairy cave - Dimitri, or: [flute, [flippers, swimmer's ring]]],
     [outer treehouse old man, flippers],
     [ghastly stump,
-        or: [feather, ricky, flute, winter, [non-entrance, holodrum plain default winter]]],
+        or: [jump 1, ricky, flute, winter, [non-entrance, holodrum plain default winter]]],
     [south swamp, or: [flippers, dimitri's flute]],
     [sunken city, or: [
         [natzu prairie, flute],
-        [natzu river, feather, or: [flippers, flute]],
+        [natzu river, jump 1, or: [flippers, flute]],
         [natzu wasteland, or: [flute, [break bush, bomb jump 3]]]]],
     [north horon stump, or: [bracelet,
         [or: [break bush, flute], or: [flippers, dimitri's flute]]]],
@@ -137,7 +148,7 @@ dry swamp: {or: [
     [spool stump, or: [summer, autumn, winter]]]}
 south swamp: {or: [
     [spool stump, or: [flippers, dimitri's flute]],
-    [spool stump, dry swamp, or: [feather, flute]],
+    [spool stump, dry swamp, or: [jump 2, flute]],
     [ghastly stump, or: [break bush, flute], or: [flippers, dimitri's flute]],
     [blaino's gym, or: [flippers, dimitri's flute]],
     [exit spool swamp portal, bracelet]]}
@@ -163,7 +174,7 @@ north horon stump: {or: [
     [blaino's gym, bracelet],
     [south swamp, or: [flippers, dimitri's flute], or: [break bush, flute]],
     [exit eyeglass lake portal, not north horon default summer, flippers,
-        feather],
+        jump 1],
     [exit eyeglass lake portal, jump 6, north horon default winter]]}
 d1 entrance: [gnarled key, or: [
     [south swamp, or: [flippers, dimitri's flute]],
@@ -171,19 +182,24 @@ d1 entrance: [gnarled key, or: [
 wet eyeglass lake: {
     or: [not north horon default summer, spring, autumn, winter]}
 d5 stump: {or: [
-    outer d5,
+    [outer d5, or: [[break mushroom, north horon default autumn], [bracelet, jump 1]]],
     [exit eyeglass lake portal, not north horon default summer,
         or: [flippers, [north horon default winter, jump 6]]],
     [north horon stump, not north horon summer,
-        or: [feather, ricky's flute, moosh's flute],
+        or: [jump 1, ricky's flute, moosh's flute],
         or: [north horon default winter, winter, flippers,
             [bracelet, dimitri's flute]]]]}
-d5 entrance: [d5 stump, or: [break mushroom, dimitri's flute],
-    or: [autumn, [north horon default autumn,
-        or: [exit eyeglass lake portal, feather, ricky's flute, moosh's flute],
+d5 entrance: [
+    d5 stump,
+    break mushroom outside,
+    or: [autumn,
+        [north horon default autumn,
+        or: [exit eyeglass lake portal, jump 1, ricky's flute, moosh's flute],
         or: [flippers, [dimitri's flute, or: [bracelet, winter]]]]]]
-eyeglass lake, across bridge: [horon village, or: [cape,
-    [feather, or: [north horon default autumn, [autumn, north horon stump]]]]]
+eyeglass lake, across bridge: [
+    horon village,
+    or: [jump 4,
+        [jump 1, or: [north horon default autumn, [autumn, north horon stump]]]]]
 dry eyeglass lake, east cave: [inner eyeglass stairs under water]
 dry eyeglass lake, west cave: [inner eyeglass bomb cave, flippers]
 
@@ -207,7 +223,7 @@ sunken city: {or: [  # land at the start of sunken city
     [blaino's gym, or: [
         [natzu prairie, flute],
         [natzu river, or: [
-            [or: [flippers, flute], feather],
+            [or: [flippers, flute], jump 1],
             [or: [flute, swimmer's ring], flippers, gale satchel]]],
         [natzu wasteland, or: [flute, [break bush, bomb jump 3]]]]]]}
 sunken city tree: [sunken city hub, seed item,

@@ -198,6 +198,9 @@ func Main() {
 		})
 	}
 	for _, ropts := range optsList {
+		if ropts.entrance {
+			ropts.dungeons = false
+		}
 		ropts.players = len(optsList)
 	}
 
