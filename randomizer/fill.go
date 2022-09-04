@@ -248,7 +248,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 
 			fmt.Println(warnings)
 
-			if nInvalids != 0 && warnings <= 10 {
+			if nInvalids != 0 && warnings == 0 {
 				break
 			}
 
