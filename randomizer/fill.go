@@ -262,6 +262,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 		for i := 0; i < zoneCount / 2; i++ {
 			zones[i] = zones[zoneCount - 1 - i]
 		}
+		fmt.Println("shuffle done")
 		return entranceMapping
 	} else {
 		outers := make([]*shuffledEntrance, 0, len(entrances))
