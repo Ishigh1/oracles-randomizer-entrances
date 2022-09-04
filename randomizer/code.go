@@ -52,8 +52,8 @@ func (rom *romState) replaceRaw(addr address, label, data string) string {
 	end := addr.offset + uint16(len(data))
 	if end > rom.bankEnds[addr.bank] {
 		if end > 0x8000 || (end > 0x4000 && addr.bank == 0) {
-			panic(fmt.Sprintf("not enough space for %s in bank %02x (%x used)\n%s",
-				label, addr.bank, end, data))
+			panic(fmt.Sprintf("not enough space for %s in bank %02x (%x used)",
+				label, addr.bank, end))
 		}
 		rom.bankEnds[addr.bank] = end
 	}
