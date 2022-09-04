@@ -182,7 +182,6 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 			zones[i], zones[j] = zones[j], zones[i]
 		})
 
-		tries := 0
 		// then make sure entrances are compatible
 		for {
 			nInvalids := 0
