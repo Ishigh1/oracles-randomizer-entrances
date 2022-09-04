@@ -170,6 +170,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 			zones[i], zones[j] = zones[j], zones[i]
 		})
 
+		tries := 0
 		// then make sure entrances are compatible
 		for {
 			shuffled := true
@@ -193,6 +194,10 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 						break
 					}
 				}
+			}
+			tries++
+			if tries % 100 == 0 {
+				fmt.Println("100 tries")
 			}
 
 			if shuffled {
