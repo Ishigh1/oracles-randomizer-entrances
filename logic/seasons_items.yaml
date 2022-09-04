@@ -75,14 +75,14 @@ bombs: {or: [
     ["bombs, 10", or: [shovel, bracelet, break flower, flute]]]}
 
 # jump x pit tiles
-jump 1: [feather]
+jump 1: {feather}
 jump 2: {feather, or:[hard, pegasus satchel]}
 jump 3: {or: [[hard, feather, pegasus satchel], cape]}
 jump 4: {cape, or: [[hard, pegasus satchel]]}
 bomb jump 2: {or: [jump 3, [hard, feather, bombs]]}
 bomb jump 3: {or: [cape, [hard, jump 3, bombs]]}
 bomb jump 4: {or: [jump 6, [hard, cape, bombs]]}
-jump 6: [cape, pegasus satchel]
+jump 6: {cape, pegasus satchel}
 # bomb jump 6: [hard, cape, pegasus satchel, bombs] # unused
 
 harvest tree: {or: [sword, rod, fool's ore, punch object]}
