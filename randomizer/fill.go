@@ -137,7 +137,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 		delete(entrances, "natzu fairy cave - Dimitri")
 	}
 
-	const chaosTest = true
+	const chaosTest = false
 	if chaosTest && entrance {
 		zoneCount := len(entrances) * 2
 		if rom.game == gameSeasons {
