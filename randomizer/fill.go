@@ -137,58 +137,148 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 		delete(entrances, "natzu fairy cave - Dimitri")
 	}
 
-	outers := make([]*shuffledEntrance, 0, len(entrances))
-	inners := make([]*shuffledEntrance, 0, len(entrances))
-
-	for _, entranceName := range orderedKeys(entrances) {
-		entrance := entrances[entranceName]
-		entrance.name = entranceName
-		outers = append(outers, entrance)
-		inners = append(inners, entrance)
-	}
-	entranceMapping := make(map[string]string)
-
-	if entrance {
-		// shuffle everything with no rules
-		src.Shuffle(len(inners), func(i, j int) {
-			inners[i], inners[j] = inners[j], inners[i]
-		})
-
-		// then make sure entrances are compatible
-		for {
-			shuffled := true
-
-			// Current rules
-			for i := range outers {
-				if outers[i].Oneway && inners[i].Connector {
-					shuffled = false
-					break
-				} else if outers[i].Trapped && inners[i].Dungeon {
-					shuffled = false
-					break
-				}
-			}
-
-			if shuffled {
-				break
-			}
-
-			src.Shuffle(len(inners), func(i, j int) {
-				if (outers[i].Oneway && inners[j].Connector) || (outers[j].Oneway && inners[i].Connector) {
-					// don't swap if an old man entrance connects to a connector
-				} else if (outers[i].Trapped && inners[j].Dungeon) || (outers[j].Trapped && inners[i].Dungeon) {
-					// don't swap if an unconnected overworld connects to a dungeon
-				} else {
-					inners[i], inners[j] = inners[j], inners[i]
-				}
-			})
+	const chaosTest = true
+	if chaosTest {
+		zoneCount := len(entrances) * 2
+		if rom.game == gameSeasons {
+			zoneCount -= 2
 		}
-	}
+		zones := make([]*shuffledEntrance, 0, zoneCount)
+		originalMap := make(map[string]*shuffledEntrance)
+		isIn := make(map[string]bool)
 
-	for i := range outers {
-		entranceMapping[outers[i].name] = inners[i].name
+		entranceMapping := make(map[string]string)
+		for _, entranceName := range orderedKeys(entrances) {
+			entrance := entrances[entranceName]
+			entrance.name = entranceName
+			
+			innerName := "inner " + entranceName
+			zones = append(zones, innerName)
+			originalMap[innerName] = entrance
+			isIn[innerName] = true
+			
+			if entranceName == "moblin keep L entrance" || entranceName == "moblin keep R entrance" {
+				continue
+			}
+			outerName := "outer " + entranceName
+			zones = append(zones, outerName)
+			originalMap[outerName] = entrance
+			isIn[outerName] = true
+		}
+
+		if entrance 
+		{
+			// shuffle everything with no rules
+			src.Shuffle(len(zones), func(i, j int) {
+				zones[i], zones[j] = zones[j], zones[i]
+			})
+
+			// then make sure entrances are compatible
+			for {
+				shuffled := true
+
+				// Current rules
+				for i := range zones {
+					firstName := zones[i]
+					secondName := zones[zoneCount - 1 - i]
+					if isIn[firstName] && !isIn[secondName]
+					{
+						inner := originalMap[firstName]
+						outer := originalMap[secondName]
+						if (outer.Trapped && inner.Dungeon) {
+							shuffled = false
+							break
+						}
+					}
+					else if isIn[firstName] && isIn[secondName]
+					{
+						inner1 := originalMap[firstName]
+						inner2 := originalMap[secondName]
+						if (inner1.Dungeon && (inner2.Oneway || inner2.Dungeon)) {
+							shuffled = false
+							break
+						}
+					}
+				}
+
+				if shuffled {
+					break
+				}
+
+				// shuffle everything with no rules
+				src.Shuffle(len(zones), func(i, j int) {
+					zones[i], zones[j] = zones[j], zones[i]
+				})
+			}
+		}
+
+		for i := range outers {
+			entranceMapping[outers[i].name] = inners[i].name
+		}
+		return entranceMapping
 	}
-	return entranceMapping
+	else {
+		outers := make([]*shuffledEntrance, 0, len(entrances))
+		inners := make([]*shuffledEntrance, 0, len(entrances))
+
+		for _, entranceName := range orderedKeys(entrances) {
+			entrance := entrances[entranceName]
+			entrance.name = entranceName
+			outers = append(outers, entrance)
+			inners = append(inners, entrance)
+		}
+		entranceMapping := make(map[string]string)
+
+		if entrance 
+		{
+			// shuffle everything with no rules
+			src.Shuffle(len(inners), func(i, j int) {
+				inners[i], inners[j] = inners[j], inners[i]
+			})
+
+			// then make sure entrances are compatible
+			for {
+				shuffled := true
+
+				// Current rules
+				for i := range outers {
+					if outers[i].Oneway && inners[i].Connector {
+						shuffled = false
+						break
+					} else if outers[i].Trapped && inners[i].Dungeon {
+						shuffled = false
+						break
+					}
+				}
+
+				if shuffled {
+					break
+				}
+
+				src.Shuffle(len(inners), func(i, j int) {
+					if (outers[i].Oneway && inners[j].Connector) || (outers[j].Oneway && inners[i].Connector) {
+						// don't swap if an old man entrance connects to a connector
+					} else if (outers[i].Trapped && inners[j].Dungeon) || (outers[j].Trapped && inners[i].Dungeon) {
+						// don't swap if an unconnected overworld connects to a dungeon
+					} else {
+						inners[i], inners[j] = inners[j], inners[i]
+					}
+				})
+			}
+		}
+
+		for i := range outers {
+			outerName := outers[i].name
+			innerName := inner[i].name
+			if outerName == "moblin keep L entrance" || outerName == "moblin keep R entrance" {
+				continue
+			}
+			fullOuterName := "outer " + outerName
+			fullInnerName := "inner " + innerName
+			entranceMapping[fullOuterName] = fullInnerName
+		}
+		return entranceMapping
+	}
 }
 
 // attempts to create a path to the given targets by placing different items in
@@ -241,13 +331,8 @@ func findRoute(rom *romState, seed uint32, ropts randomizerOptions,
 		// Map outer to inner entrances
 		entranceMapping := setEntrances(rom, ri.src, ri.companion, ropts.entrance)
 		for outerName, innerName := range entranceMapping {
-			if outerName == "moblin keep L entrance" || outerName == "moblin keep R entrance" {
-				continue
-			}
-			fullOuterName := "outer " + outerName
-			fullInnerName := "inner " + innerName
-			ri.graph[fullOuterName].addParent(ri.graph[fullInnerName])
-			ri.graph[fullInnerName].addParent(ri.graph[fullOuterName])
+			ri.graph[fullOuterName].addParent(ri.graph[innerName])
+			ri.graph[fullInnerName].addParent(ri.graph[outerName])
 		}
 		ri.entranceMapping = entranceMapping
 
