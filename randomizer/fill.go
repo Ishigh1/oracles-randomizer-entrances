@@ -143,7 +143,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 		if rom.game == gameSeasons {
 			zoneCount -= 2
 		}
-		zones := make([]*shuffledEntrance, 0, zoneCount)
+		zones := make([]string, 0, zoneCount)
 		originalMap := make(map[string]*shuffledEntrance)
 		isIn := make(map[string]bool)
 
