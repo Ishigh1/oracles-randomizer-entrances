@@ -189,12 +189,23 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 			invalids := make(map[string]bool)
 			// Current rules
 			for i := range zones {
+				if i == zoneCount / 2 {
+					break
+				}
 				firstName := zones[i]
 				secondName := zones[zoneCount - 1 - i]
 				if isIn[firstName] && !isIn[secondName]{
 					inner := originalMap[firstName]
 					outer := originalMap[secondName]
-					if (outer.Trapped && inner.Dungeon) {
+					if (outer.Trapped && (inner.Oneway || inner.Dungeon)) {
+						nInvalids += 2
+						invalids[firstName] = true
+						invalids[secondName] = true
+					}
+				} else if !isIn[firstName] && isIn[secondName]{
+					outer := originalMap[firstName]
+					inner := originalMap[secondName]
+					if (outer.Trapped && (inner.Oneway || inner.Dungeon)) {
 						nInvalids += 2
 						invalids[firstName] = true
 						invalids[secondName] = true
@@ -202,13 +213,21 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 				} else if isIn[firstName] && isIn[secondName]{
 					inner1 := originalMap[firstName]
 					inner2 := originalMap[secondName]
-					if (inner1.Dungeon && (inner2.Oneway || inner2.Dungeon)) {
-						nInvalids++
+					if ((inner1.Oneway || inner1.Dungeon) && (inner2.Oneway || inner2.Dungeon)) {
+						nInvalids += 2
 						invalids[firstName] = true
+						invalids[secondName] = true
+					}
+				} else if !isIn[firstName] && !isIn[secondName]{
+					outer1 := originalMap[firstName]
+					outer2 := originalMap[secondName]
+					if (outer1.Trapped && outer2.Trapped) {
+						nInvalids += 2
+						invalids[firstName] = true
+						invalids[secondName] = true
 					}
 				}
 			}
-			fmt.Println(nInvalids)
 
 			if nInvalids != 0 {
 				break
@@ -228,7 +247,6 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 		for i := 0; i < zoneCount / 2; i++ {
 			zones[i] = zones[zoneCount - 1 - i]
 		}
-		fmt.Println("finished")
 		return entranceMapping
 	} else {
 		outers := make([]*shuffledEntrance, 0, len(entrances))
