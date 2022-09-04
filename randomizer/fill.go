@@ -155,6 +155,11 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 			zones = append(zones, innerName)
 			originalMap[innerName] = entrance
 			isIn[innerName] = true
+			if entrance.Dungeon || entrance.Oneway {
+				deadEnds = append(deadEnds, innerName)
+			} else {
+				notDeadEnds = append(notDeadEnds, innerName)
+			}
 			
 			if entranceName == "moblin keep L entrance" || entranceName == "moblin keep R entrance" {
 				continue
@@ -163,6 +168,11 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 			zones = append(zones, outerName)
 			originalMap[outerName] = entrance
 			isIn[outerName] = true
+			if entrance.Trapped {
+				deadEnds = append(deadEnds, outerName)
+			} else {
+				notDeadEnds = append(notDeadEnds, outerName)
+			}
 		}
 
 		// shuffle everything with no rules
@@ -173,8 +183,9 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 		tries := 0
 		// then make sure entrances are compatible
 		for {
-			shuffled := true
+			nInvalids := 0
 
+			invalids := make(map[string]bool)
 			// Current rules
 			for i := range zones {
 				firstName := zones[i]
@@ -183,22 +194,20 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 					inner := originalMap[firstName]
 					outer := originalMap[secondName]
 					if (outer.Trapped && inner.Dungeon) {
-						shuffled = false
-						break
+						nInvalids += 2
+						invalids[firstName] = true
+						invalids[secondName] = true
 					}
 				} else if isIn[firstName] && isIn[secondName]{
 					inner1 := originalMap[firstName]
 					inner2 := originalMap[secondName]
 					if (inner1.Dungeon && (inner2.Oneway || inner2.Dungeon)) {
-						shuffled = false
-						break
+						nInvalids++
+						invalids[inner1] = true
 					}
 				}
 			}
-			tries++
-			if tries % 100 == 0 {
-				fmt.Println("100 tries")
-			}
+			fmt.Println(nInvalids)
 
 			if shuffled {
 				break
@@ -206,7 +215,9 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 
 			// shuffle everything with no rules
 			src.Shuffle(len(zones), func(i, j int) {
-				zones[i], zones[j] = zones[j], zones[i]
+				if invalids[i] || invalids[j] {
+					zones[i], zones[j] = zones[j], zones[i]
+				}
 			})
 		}
 
