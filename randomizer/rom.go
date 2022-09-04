@@ -179,6 +179,8 @@ func (rom *romState) setShuffledEntrances(entranceMapping map[string]string) {
 				}
 			}
 
+			fmt.Println(outerName)
+			fmt.Println(innerName)
 			entrances[outerName].newEntryByte1 = entrances[innerName].oldEntryByte1
 			entrances[outerName].newEntryByte2 = (entrances[innerName].oldEntryByte2 & 0xf0) + (entrances[outerName].oldEntryByte2 & 0xf)
 			entrances[innerName].newExitByte1 = entrances[outerName].oldExitByte1
