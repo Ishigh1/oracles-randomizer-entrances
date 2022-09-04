@@ -199,7 +199,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 					inner := originalMap[firstName]
 					outer := originalMap[secondName]
 					if (outer.Trapped && (inner.Oneway || inner.Dungeon)) {
-						nInvalids++
+						nInvalids += 2
 						invalids[firstName] = true
 						invalids[secondName] = true
 					}
@@ -207,7 +207,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 					outer := originalMap[firstName]
 					inner := originalMap[secondName]
 					if (outer.Trapped && (inner.Oneway || inner.Dungeon)) {
-						nInvalids++
+						nInvalids += 2
 						invalids[firstName] = true
 						invalids[secondName] = true
 					}
@@ -215,15 +215,13 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 					inner1 := originalMap[firstName]
 					inner2 := originalMap[secondName]
 					if (inner1.Oneway || inner1.Dungeon) && (inner2.Oneway || inner2.Dungeon) {
-						nInvalids++
+						nInvalids += 2
 						invalids[firstName] = true
 						invalids[secondName] = true
 					} else if inner1.Oneway || inner1.Dungeon { // discourage without preventing it
 						invalids[firstName] = true
-						invalids[secondName] = true
 						warnings++
 					} else if inner2.Oneway || inner2.Dungeon {
-						invalids[firstName] = true
 						invalids[secondName] = true
 						warnings++
 					}
@@ -231,15 +229,13 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 					outer1 := originalMap[firstName]
 					outer2 := originalMap[secondName]
 					if (outer1.Trapped && outer2.Trapped) {
-						nInvalids++
+						nInvalids += 2
 						invalids[firstName] = true
 						invalids[secondName] = true
 					} else if outer1.Trapped { // discourage without preventing it
 						invalids[firstName] = true
-						invalids[secondName] = true
 						warnings++
 					} else if outer2.Trapped {
-						invalids[firstName] = true
 						invalids[secondName] = true
 						warnings++
 					}
@@ -256,7 +252,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 			src.Shuffle(len(zones), func(i, j int) {
 				firstName := zones[i]
 				secondName := zones[j]
-				if invalids[firstName] && invalids[secondName] {
+				if invalids[firstName] || invalids[secondName] {
 					zones[i], zones[j] = zones[j], zones[i]
 				}
 			})
