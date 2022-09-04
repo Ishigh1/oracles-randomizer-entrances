@@ -99,6 +99,7 @@ func loadLogic(filename string) map[string]*prenode {
 	raw := make(map[string]interface{})
 	if err := yaml.Unmarshal(
 		FSMustByte(false, "/logic/"+filename), raw); err != nil {
+		fmt.Printf("Incorrect file %s\n", filename)
 		panic(err)
 	}
 	m := make(map[string]*prenode)
