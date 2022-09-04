@@ -3,6 +3,8 @@ package randomizer
 import (
 	"bytes"
 	"fmt"
+
+	"gopkg.in/yaml.v2"
 )
 
 // treasure interaction spawn + collect modes. bits 0-2 are for collect

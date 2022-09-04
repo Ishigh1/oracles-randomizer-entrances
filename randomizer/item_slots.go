@@ -2,6 +2,8 @@ package randomizer
 
 import (
 	"fmt"
+
+	"gopkg.in/yaml.v2"
 )
 
 // an item slot (chest, gift, etc). it references room data and treasure data.
