@@ -263,7 +263,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 
 		for i := range outers {
 			outerName := outers[i].name
-			innerName := inner[i].name
+			innerName := inners[i].name
 			if outerName == "moblin keep L entrance" || outerName == "moblin keep R entrance" {
 				continue
 			}
@@ -325,8 +325,8 @@ func findRoute(rom *romState, seed uint32, ropts randomizerOptions,
 		// Map outer to inner entrances
 		entranceMapping := setEntrances(rom, ri.src, ri.companion, ropts.entrance)
 		for outerName, innerName := range entranceMapping {
-			ri.graph[fullOuterName].addParent(ri.graph[innerName])
-			ri.graph[fullInnerName].addParent(ri.graph[outerName])
+			ri.graph[outerName].addParent(ri.graph[innerName])
+			ri.graph[innerName].addParent(ri.graph[outerName])
 		}
 		ri.entranceMapping = entranceMapping
 
