@@ -224,8 +224,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 		}
 		entranceMapping := make(map[string]string)
 
-		if entrance 
-		{
+		if entrance {
 			// shuffle everything with no rules
 			src.Shuffle(len(inners), func(i, j int) {
 				inners[i], inners[j] = inners[j], inners[i]
