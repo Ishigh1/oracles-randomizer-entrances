@@ -138,7 +138,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 	}
 
 	const chaosTest = true
-	if chaosTest {
+	if chaosTest && entrance {
 		zoneCount := len(entrances) * 2
 		if rom.game == gameSeasons {
 			zoneCount -= 2
@@ -165,46 +165,44 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 			isIn[outerName] = true
 		}
 
-		if entrance {
+		// shuffle everything with no rules
+		src.Shuffle(len(zones), func(i, j int) {
+			zones[i], zones[j] = zones[j], zones[i]
+		})
+
+		// then make sure entrances are compatible
+		for {
+			shuffled := true
+
+			// Current rules
+			for i := range zones {
+				firstName := zones[i]
+				secondName := zones[zoneCount - 1 - i]
+				if isIn[firstName] && !isIn[secondName]{
+					inner := originalMap[firstName]
+					outer := originalMap[secondName]
+					if (outer.Trapped && inner.Dungeon) {
+						shuffled = false
+						break
+					}
+				} else if isIn[firstName] && isIn[secondName]{
+					inner1 := originalMap[firstName]
+					inner2 := originalMap[secondName]
+					if (inner1.Dungeon && (inner2.Oneway || inner2.Dungeon)) {
+						shuffled = false
+						break
+					}
+				}
+			}
+
+			if shuffled {
+				break
+			}
+
 			// shuffle everything with no rules
 			src.Shuffle(len(zones), func(i, j int) {
 				zones[i], zones[j] = zones[j], zones[i]
 			})
-
-			// then make sure entrances are compatible
-			for {
-				shuffled := true
-
-				// Current rules
-				for i := range zones {
-					firstName := zones[i]
-					secondName := zones[zoneCount - 1 - i]
-					if isIn[firstName] && !isIn[secondName]{
-						inner := originalMap[firstName]
-						outer := originalMap[secondName]
-						if (outer.Trapped && inner.Dungeon) {
-							shuffled = false
-							break
-						}
-					} else if isIn[firstName] && isIn[secondName]{
-						inner1 := originalMap[firstName]
-						inner2 := originalMap[secondName]
-						if (inner1.Dungeon && (inner2.Oneway || inner2.Dungeon)) {
-							shuffled = false
-							break
-						}
-					}
-				}
-
-				if shuffled {
-					break
-				}
-
-				// shuffle everything with no rules
-				src.Shuffle(len(zones), func(i, j int) {
-					zones[i], zones[j] = zones[j], zones[i]
-				})
-			}
 		}
 
 		entranceMapping := make(map[string]string)
@@ -263,10 +261,10 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 
 		for i := range outers {
 			outerName := outers[i].name
-			innerName := inners[i].name
 			if outerName == "moblin keep L entrance" || outerName == "moblin keep R entrance" {
 				continue
 			}
+			innerName := inners[i].name
 			fullOuterName := "outer " + outerName
 			fullInnerName := "inner " + innerName
 			entranceMapping[fullOuterName] = fullInnerName
