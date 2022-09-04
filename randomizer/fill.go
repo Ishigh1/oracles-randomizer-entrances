@@ -214,6 +214,9 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 				} else if isIn[firstName] && isIn[secondName]{
 					inner1 := originalMap[firstName]
 					inner2 := originalMap[secondName]
+					invalids[firstName] = true
+					invalids[secondName] = true
+					warnings++
 					if (inner1.Oneway || inner1.Dungeon) && (inner2.Oneway || inner2.Dungeon) {
 						nInvalids++
 						invalids[firstName] = true
@@ -230,6 +233,9 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 				} else if !isIn[firstName] && !isIn[secondName]{
 					outer1 := originalMap[firstName]
 					outer2 := originalMap[secondName]
+					invalids[firstName] = true
+					invalids[secondName] = true
+					warnings++
 					if (outer1.Trapped && outer2.Trapped) {
 						nInvalids++
 						invalids[firstName] = true
