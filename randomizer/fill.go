@@ -143,6 +143,8 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 		if rom.game == gameSeasons {
 			zoneCount -= 2
 		}
+		deadEnds := make([]string, 0, zoneCount)
+		notDeadEnds := make([]string, 0, zoneCount)
 		zones := make([]string, 0, zoneCount)
 		originalMap := make(map[string]*shuffledEntrance)
 		isIn := make(map[string]bool)
@@ -203,19 +205,21 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 					inner2 := originalMap[secondName]
 					if (inner1.Dungeon && (inner2.Oneway || inner2.Dungeon)) {
 						nInvalids++
-						invalids[inner1] = true
+						invalids[firstName] = true
 					}
 				}
 			}
 			fmt.Println(nInvalids)
 
-			if shuffled {
+			if nInvalids != 0 {
 				break
 			}
 
 			// shuffle everything with no rules
 			src.Shuffle(len(zones), func(i, j int) {
-				if invalids[i] || invalids[j] {
+				firstName := zones[i]
+				secondName := zones[j]
+				if invalids[firstName] || invalids[secondName] {
 					zones[i], zones[j] = zones[j], zones[i]
 				}
 			})
