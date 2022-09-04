@@ -147,7 +147,6 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 		originalMap := make(map[string]*shuffledEntrance)
 		isIn := make(map[string]bool)
 
-		entranceMapping := make(map[string]string)
 		for _, entranceName := range orderedKeys(entrances) {
 			entrance := entrances[entranceName]
 			entrance.name = entranceName
@@ -166,8 +165,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 			isIn[outerName] = true
 		}
 
-		if entrance 
-		{
+		if entrance {
 			// shuffle everything with no rules
 			src.Shuffle(len(zones), func(i, j int) {
 				zones[i], zones[j] = zones[j], zones[i]
@@ -181,8 +179,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 				for i := range zones {
 					firstName := zones[i]
 					secondName := zones[zoneCount - 1 - i]
-					if isIn[firstName] && !isIn[secondName]
-					{
+					if isIn[firstName] && !isIn[secondName]{
 						inner := originalMap[firstName]
 						outer := originalMap[secondName]
 						if (outer.Trapped && inner.Dungeon) {
@@ -190,8 +187,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 							break
 						}
 					}
-					else if isIn[firstName] && isIn[secondName]
-					{
+					else if isIn[firstName] && isIn[secondName]{
 						inner1 := originalMap[firstName]
 						inner2 := originalMap[secondName]
 						if (inner1.Dungeon && (inner2.Oneway || inner2.Dungeon)) {
@@ -212,12 +208,12 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 			}
 		}
 
-		for i := range outers {
-			entranceMapping[outers[i].name] = inners[i].name
+		entranceMapping := make(map[string]string)
+		for i := 0; i < zoneCount / 2; i++ {
+			zones[i] = zones[zoneCount - 1 - i]
 		}
 		return entranceMapping
-	}
-	else {
+	} else {
 		outers := make([]*shuffledEntrance, 0, len(entrances))
 		inners := make([]*shuffledEntrance, 0, len(entrances))
 
