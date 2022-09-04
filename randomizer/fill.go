@@ -185,6 +185,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 		// then make sure entrances are compatible
 		for {
 			nInvalids := 0
+			warnings := 0
 
 			invalids := make(map[string]bool)
 			// Current rules
@@ -219,8 +220,10 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 						invalids[secondName] = true
 					} else if inner1.Oneway || inner1.Dungeon { // discourage without preventing it
 						invalids[firstName] = true
+						warnings++
 					} else if inner2.Oneway || inner2.Dungeon {
 						invalids[secondName] = true
+						warnings++
 					}
 				} else if !isIn[firstName] && !isIn[secondName]{
 					outer1 := originalMap[firstName]
@@ -231,11 +234,15 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 						invalids[secondName] = true
 					} else if outer1.Trapped { // discourage without preventing it
 						invalids[firstName] = true
+						warnings++
 					} else if outer2.Trapped {
 						invalids[secondName] = true
+						warnings++
 					}
 				}
 			}
+
+			fmt.Println(warnings)
 
 			if nInvalids != 0 {
 				break
