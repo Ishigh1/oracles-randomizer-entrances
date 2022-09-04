@@ -186,8 +186,7 @@ func setEntrances(rom *romState, src *rand.Rand, companion int, entrance bool) m
 							shuffled = false
 							break
 						}
-					}
-					else if isIn[firstName] && isIn[secondName]{
+					} else if isIn[firstName] && isIn[secondName]{
 						inner1 := originalMap[firstName]
 						inner2 := originalMap[secondName]
 						if (inner1.Dungeon && (inner2.Oneway || inner2.Dungeon)) {
