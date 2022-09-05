@@ -65,7 +65,7 @@ Out of logic:
 - Required damage (damage boosts, falling in pits)
 - Farming rupees for shop purchases
 - Getting initial scent seeds from the plants in D3
-- Getting initial bombs from Goron Shooting Gallery or Head Thwomp
+- Getting initial bombs from Goron Shooting Gallery
 - Lighting torches using mystery seeds
 - Using only mystery seeds as a weapon
 - Using only scent or gale seeds from the seed satchel as a weapon

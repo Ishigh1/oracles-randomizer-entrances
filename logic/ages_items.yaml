@@ -1,8 +1,6 @@
 shield: {or: [wooden shield, iron shield]}
 
-bombs: {or: [
-    ["bombs, 10", or: [bracelet, break pot, flute, shovel]],
-    [hard, or: [d2 boss, goron shooting gallery]]]}
+bombs: {or: ["bombs, 10", d2 boss, [hard, goron shooting gallery]}
 
 ricky's flute: {or: []}
 dimitri's flute: {or: []}
@@ -20,7 +18,7 @@ fixed rupees: {rupees: [
 # expert's ring can do some things that fist ring can't, so this is for the
 # lowest common denominator.
 punch object: {or: [fist ring, expert's ring]}
-punch enemy: {or: [[hard, fist ring], expert's ring]}
+punch enemy: {or: [fist ring, expert's ring]}
 
 # progressives
 noble sword: {count: [2, sword]}
