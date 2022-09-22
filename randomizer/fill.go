@@ -218,6 +218,9 @@ func findRoute(rom *romState, seed uint32, ropts randomizerOptions,
 		if ropts.hard {
 			ri.graph["hard"].addParent(ri.graph["start"])
 		}
+		if !ropts.easy {
+			ri.graph["medium"].addParent(ri.graph["start"])
+		}
 		if !ropts.entrance {
 			ri.graph["non-entrance"].addParent(ri.graph["start"])
 		}

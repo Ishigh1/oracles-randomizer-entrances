@@ -3,6 +3,7 @@
 # being able to call the animal in general.
 
 start: [] # parent for nodes reachable by default
+medium: {or: []}
 hard: {or: []}
 non-entrance: {or: []}
 
@@ -79,7 +80,7 @@ d2 roof: {or: [
     [central woods of winter, bracelet,
         or: [woods of winter default summer, ricky's flute]]]}
 chest on top of D2: [d2 roof]
-cave outside D2: [inner E of d2 - R cave, or: [cape, magnet gloves]]
+cave outside D2: [inner E of d2 - R cave, or: [jump 4, magnet gloves]]
 woods of winter, 1st cave: [inner ww bomb cave, break bush safe]
 eastern suburbs, on cliff: [inner suburbs stairs past blooming flower,
     or: [cape, [hard, bomb jump 2], magnet gloves]]

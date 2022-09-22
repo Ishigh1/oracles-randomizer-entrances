@@ -174,7 +174,7 @@ enter d6: {or: []}
 d6 1F east: [inner d6, or: [hard, feather, sword, bombs, expert's ring]]
 d6 rupee room: [inner d6, bombs]
 d6 1F terrace: {or: [inner d6, [magnet gloves, count: [2, d6 small key]]]}
-d6 magnet ball drop: [inner d6, or: [[magnet gloves, feather], cape]]
+d6 magnet ball drop: [inner d6, or: [[magnet gloves, jump 1], jump 4]]
 d6 crystal trap room: [inner d6]
 d6 U-room: [inner d6, break crystal, magic boomerang]
 d6 torch stairs: [d6 U-room, ember seeds]
@@ -182,7 +182,7 @@ d6 escape room: [d6 torch stairs, feather]
 d6 vire chest: [d6 escape room, kill stalfos]
 
 # 3 keys
-d6 beamos room: [inner d6, count: [3, d6 small key]]
+d6 beamos room: [inner d6, count: [3, d6 small key]] #compass
 d6 2F gibdo chest: [d6 beamos room]
 d6 2F armos chest: [d6 2F gibdo chest, bombs]
 d6 armos hall: [d6 2F armos chest, feather]

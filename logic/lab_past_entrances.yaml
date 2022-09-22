@@ -12,13 +12,13 @@ outer past - lynna - dark house with boy: {or: [lynna village]}
 outer past - lynna - postman house: {or: [lynna village]}
 outer past - lynna - S house: {or: [lynna village]}
 outer past - lynna - sword game: {or: [lynna village]}
-outer palace L: {or: [[nuun, ages]]}
-outer palace M: {or: [
+outer palace L: {medium, or: [[nuun, ages]]}
+outer palace M: {medium, or: [
     [lynna village, or: [
         ages, 
         [hard, satchel, scent seeds, pegasus seeds]]]
 ]}
-outer palace R: {or: [[nuun, ages]]}
+outer palace R: {medium, or: [[nuun, ages]]}
 outer stairs SE of palace: {or: [[lynna village, break bush safe]]}
 outer past - SW goron - old zora: {or: [
     ages, 

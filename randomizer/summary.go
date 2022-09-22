@@ -161,8 +161,12 @@ func writeSummary(path string, checksum []byte, ropts randomizerOptions,
 	// header
 	summary <- fmt.Sprintf("seed: %08x", ri.seed)
 	summary <- fmt.Sprintf("sha-1 sum: %x", checksum)
-	summary <- fmt.Sprintf("difficulty: %s",
-		ternary(ropts.hard, "hard", "normal"))
+	if (ropts.easy) {
+		summary <- fmt.Sprintf("difficulty: easy")
+	} else {
+		summary <- fmt.Sprintf("difficulty: %s",
+			ternary(ropts.hard, "hard", "normal"))
+	}
 
 	// items
 	sendSectionHeader(summary, "progression items")

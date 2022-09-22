@@ -58,6 +58,7 @@ var (
 	flagDevCmd   string
 	flagDungeons bool
 	flagEntrance bool
+	flagEasy     bool
 	flagHard     bool
 	flagNoUI     bool
 	flagPlan     string
@@ -70,6 +71,7 @@ var (
 
 type randomizerOptions struct {
 	treewarp bool
+	easy     bool
 	hard     bool
 	dungeons bool
 	portals  bool
@@ -90,6 +92,8 @@ func initFlags() {
 		"shuffle dungeon entrances (disabled in entrance rando)")
 	flag.BoolVar(&flagEntrance, "entrances", false,
 		"shuffle all entrances")
+	flag.BoolVar(&flagEasy, "easy", false,
+		"disable doing stuff hard to new players")
 	flag.BoolVar(&flagHard, "hard", false,
 		"enable more difficult logic")
 	flag.BoolVar(&flagNoUI, "noui", false,
@@ -125,6 +129,7 @@ func Main() {
 
 	ropts := randomizerOptions{
 		treewarp: flagTreewarp,
+		easy:     flagEasy,
 		hard:     flagHard,
 		dungeons: flagDungeons,
 		portals:  flagPortals,
@@ -335,9 +340,17 @@ func getAndLogOptions(game int, ui *uiInstance, ropts *randomizerOptions,
 	}
 
 	if ui != nil {
-		ropts.hard = ui.doPrompt("enable hard difficulty? (y/n)") == 'y'
+		ropts.easy = ui.doPrompt("enable easy difficulty? (y/n)") == 'y'
 	}
-	logf("using %s difficulty.", ternary(ropts.hard, "hard", "normal"))
+
+	if ropts.easy {
+		logf("using easy difficulty.")
+	} else {
+	    if ui != nil {
+			ropts.hard = ui.doPrompt("enable hard difficulty? (y/n)") == 'y'
+		}
+		logf("using %s difficulty.", ternary(ropts.hard, "hard", "normal"))
+	}
 
 	if ui != nil {
 		ropts.treewarp = ui.doPrompt("enable tree warp? (y/n)") == 'y'
@@ -673,12 +686,15 @@ func optString(seed uint32, ropts randomizerOptions, flagSep string) string {
 		s += fmt.Sprintf("%08x", seed)
 	}
 
-	if ropts.treewarp || ropts.hard || ropts.dungeons || ropts.portals || ropts.entrance {
+	if ropts.treewarp || ropts.easy || ropts.hard || ropts.dungeons || ropts.portals || ropts.entrance {
 		// these are in chronological order of introduction, for no particular
 		// reason.
 		s += flagSep
 		if ropts.treewarp {
 			s += "t"
+		}
+		if ropts.easy {
+			s += "b" //beginner
 		}
 		if ropts.hard {
 			s += "h"
