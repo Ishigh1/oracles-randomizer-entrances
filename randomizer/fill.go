@@ -229,6 +229,8 @@ func findRoute(rom *romState, seed uint32, ropts randomizerOptions,
 		ri.ringMap, _ = rom.randomizeRingPool(ri.src, nil)
 		itemList, slotList = initRouteInfo(ri, rom)
 
+		
+
 		// attach free items to the "start" node until placed.
 		for ei := itemList.Front(); ei != nil; ei = ei.Next() {
 			item := ei.Value.(*node)
@@ -423,8 +425,7 @@ var seedTreeNames = map[string]bool{
 }
 
 // return shuffled lists of item and slot nodes
-func initRouteInfo(
-	ri *routeInfo, rom *romState) (itemList, slotList *list.List) {
+func initRouteInfo(ri *routeInfo, rom *romState) (itemList, slotList *list.List) {
 	// get slices of names
 	var itemNames []string
 	slotNames := make([]string, 0, len(ri.slots))
@@ -569,15 +570,27 @@ func trySlotRandomItem(g graph, src *rand.Rand, itemPool, slotPool *list.List,
 				// test whether seed is still beatable w/ item placement
 				g.reset()
 				item.addParent(slot)
+				
+				if slot.name == "horon village tree" || slot.name == "south lynna tree"
+					g["harvest " + item.name].addParent(g["start"])
+
 				g["start"].explore()
 				if !g["done"].reached {
 					item.removeParent(slot)
+
+					if slot.name == "horon village tree" || slot.name == "south lynna tree"
+						g["harvest " + item.name].removeParent(g["start"])
+
 					continue
 				}
 
 				// make sure item didn't cause a forward-wise dead end
 				if isDeadEnd(g, ei, es, itemPool, slotPool) {
 					item.removeParent(slot)
+
+					if slot.name == "horon village tree" || slot.name == "south lynna tree"
+						g["harvest " + item.name].removeParent(g["start"])
+
 					continue
 				}
 

@@ -1,6 +1,6 @@
 shield: {or: [wooden shield, iron shield]}
 
-bombs: {or: ["bombs, 10", d2 boss, [hard, goron shooting gallery]}
+bombs: {or: ["bombs, 10", d2 boss, [hard, goron shooting gallery], or: [kill normal, flute]}
 
 ricky's flute: {or: []}
 dimitri's flute: {or: []}
@@ -29,22 +29,14 @@ ages: {count: [3, harp]}
 power glove: {count: [2, bracelet]}
 mermaid suit: {count: [2, flippers]}
 
-#jump items
-jump 1 : [feather]
-jump 2 : [feather, or: [pegasus satchel, hard]]
-bomb jump 2: [feather, or: [pegasus satchel, [hard, bombs]]]
-jump 3: [hard, feather, pegasus satchel]
-bomb jump 3: [hard, feather, pegasus satchel, bombs]
+refill seeds: {or: [flute, ricky, sword, switch hook, bracelet]}
+seed item: {or: [satchel, seed shooter], refill seeds}
 
-seed item: {or: [satchel, seed shooter]}
-
-ember seeds: [ember tree seeds]
-
-scent seeds: {or: [scent tree seeds, 
-    [hard, or: [d3 seeds from bridge room, d8 boss]]]}
-pegasus seeds: [pegasus tree seeds]
-gale seeds: [gale tree seeds]
-mystery seeds: [mystery tree seeds]
+harvest ember seeds: [or: [ember tree seeds]]
+harvest scent seeds: {or: [scent tree seeds, [hard, or: [d3 seeds from bridge room, d8 boss]]]}
+harvest pegasus seeds: [or: [pegasus tree seeds]]
+harvest gale seeds: [or: [gale tree seeds]]
+harvest mystery seeds: [or: [mystery tree seeds]]
 
 ember satchel: [ember seeds, satchel]
 scent satchel: [scent seeds, satchel]
@@ -57,4 +49,12 @@ scent shooter: [scent seeds, seed shooter]
 pegasus shooter: [pegasus seeds, seed shooter]
 gale shooter: [gale seeds, seed shooter]
 mystery shooter: [mystery seeds, seed shooter]
-any seed shooter: [seed shooter] #or: [ember seeds, scent seeds, pegasus seeds, gale seeds, mystery seeds]]
+
+any seed shooter: [seed shooter, refill seeds]
+
+ember seeds: [harvest ember seeds, refill seeds, seed item]
+mystery seeds: [harvest mystery seeds, refill seeds, seed item]
+scent seeds: [harvest scent seeds, refill seeds, seed item]
+pegasus seeds: [harvest pegasus seeds, refill seeds, seed item]
+gale seeds: [harvest gale seeds, refill seeds, seed item]
+

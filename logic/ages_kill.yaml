@@ -14,7 +14,7 @@ hit lever from minecart above: {or: [sword, any seed shooter, boomerang]}
 hit switch: {or: [sword, bombs, punch object, ember seeds, scent seeds,
     mystery seeds, any seed shooter, switch hook, boomerang]}
 hit switch ranged: {or: [bombs, any seed shooter, switch hook, boomerang,
-    [sword, energy ring]]}
+    [sword, energy ring], [hard, noble sword]]}
 
 # flute isn't included here since it's only available in some places.
 break bush safe: {or: [

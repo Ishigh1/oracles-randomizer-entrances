@@ -1,0 +1,22 @@
+limit jump : [hard] #above holes
+bomb jump : [hard, bombs] #above liquids
+diagonal movement : [hard]
+
+jump : [feather] #used on feather puzzles, 2D sections and throw a seed in-air (hard logic)
+diagonal jump 1 : [or: [feather, diagonal movement]] #used to walk on hole borders
+jump 1 : [feather]
+limit jump 2: [or: jump 2, [jump 1, limit jump]]
+bomb jump 2: [or: jump 2, [jump 1, bomb jump]]
+diagonal jump 2 : or: [jump 2, [diagonal movement, limit jump 2]] #like limit jump 2, but you move slightly perpendicularly to barely touch the other side
+jump 2 : [or: [cape, [feather, pegasus satchel]]]
+limit jump 3: [or: jump 3, [jump 2, limit jump]]
+bomb jump 3: {or: [cape, [jump 2, bomb jump]]}
+jump 3: [cape]
+limit jump 4: [or: jump 4, [jump 3, limit jump]]
+bomb jump 4: [or: jump 4, [jump 3, bomb jump]]
+jump 4: [jump 5]
+limit jump 2: [or: jump 5, [jump 4, limit jump]]
+bomb jump 2: [or: jump 5, [jump 4, bomb jump]]
+jump 5: [cape, pegasus satchel]
+limit jump 6: [jump 5, limit jump]
+bomb jump 6: [jump 5, bomb jump]

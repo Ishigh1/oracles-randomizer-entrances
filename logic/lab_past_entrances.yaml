@@ -96,11 +96,8 @@ inner past - NE of mystery tree: {or: [
     inner above mystery tree - L stairs,
     [inner above mystery tree - R stairs, or: [
         bracelet, 
-        jump 3, 
-        [feather, or: 
-            switch hook, 
-            [hard, sword]]]]
-]}
+        limit jump 3, 
+        [hard, or: [diagonal jump 2, switch hook], break bush]]]]}
 inner past - NW of d2: {or: []}
 inner past - NE of d2: {or: []}
 inner past - bush SE of mystery tree: {or: []}
@@ -108,10 +105,8 @@ inner above mystery tree - L stairs: {or: [inner past - NE of mystery tree]}
 inner above mystery tree - R stairs: {or: [
     [inner past - NE of mystery tree, or: [
         bracelet, 
-        jump 3, 
-        [feather, or: 
-            switch hook, 
-            [hard, sword]]]]
+        limit jump 3, 
+        [or: [diagonal jump 2, [hard, switch hook]], break bush, or: [hard, gale satchel]]]]
 ]}
 
 # crescent
@@ -381,9 +376,9 @@ goron lower past W: {or: [
     outer past - lower goron - leftmost cave,
     [goron lower past E, or: [
         flippers, 
-        [hard, jump 3]]],
+        [hard, bomb jump 3]]],
     [outer d6 past, or: [
-        bomb jump 2, 
+        [hard, bomb jump 2], 
         flippers]],
     [goron lower present, or: [
         ages,
@@ -394,7 +389,7 @@ goron lower past W: {or: [
 goron lower past E: {or: [
     goron lower past water,
     [goron lower past W, or: [
-        [hard, jump 3], 
+        [hard, bomb jump 3], 
         flippers]],
     outer past - dance cave,
     [outer past - lower goron old man, ember shooter], # may softlock

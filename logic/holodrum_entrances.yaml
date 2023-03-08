@@ -20,8 +20,8 @@ inner horon shop: {or: []}
 inner ring shop: {or: []}
 inner baby house - L entrance: {or: [inner baby house - R entrance]}
 inner baby house - R entrance: {or: [inner baby house - L entrance]}
-inner horon stairs into portal: {or: [[exit horon village portal, or: [hit lever, [hard, jump 6]]]]}
-inner SE horon vill house - main entrance: {or: [[inner SE horon vill house - side entrance, bombs]]}
+inner horon stairs into portal: {or: [[exit horon village portal, or: [hit lever, [limit jump 6, hard]]]]}
+inner SE horon vill house - main entrance: {or: [[inner SE horon vill house - side entrance, bombs]]} #cucko guy
 inner SE horon vill house - side entrance: {or: [[inner SE horon vill house - main entrance, bombs]]}
 inner gba shop: {or: []}
 
@@ -30,7 +30,7 @@ lower west coast: {or: [
   [horon village, pirate ship], 
   outer west coast house - main entrance, 
   outer cave leading up to graveyard,
-  [upper west coast, or: [[western coast default summer, pirate ship], jump 3]]  # can get back up
+  [upper west coast, or: [western coast default summer, [bombs, summer, non-entrance, gale satchel]]  # can get back up
 ]}
 upper west coast: {or: [  # area surrounding SW grave
   [outer d7, shovel],  # in case of winter
